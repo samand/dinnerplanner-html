@@ -6,6 +6,15 @@ var DinnerModel = function() {
 	this.numberOfGuests = 4;
 	this.menuArray=[];
 
+	this.incrementNumberOfGuests = function () {
+		this.numberOfGuests++;
+		console.log("Incremented number of guests to",this.numberOfGuests);
+	}
+	this.decrementNumberOfGuests = function (){
+		this.numberOfGuests--;
+		console.log("Decremented number of guests to",this.numberOfGuests);
+	}
+
 	this.setNumberOfGuests = function(num) {
 		this.numberOfGuests=num;
 		console.log("Changed number of guests to", this.numberOfGuests);

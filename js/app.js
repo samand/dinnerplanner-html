@@ -1,24 +1,11 @@
 $(function() {
 	//We instantiate our model
 	var dinnerModel = new DinnerModel();
-	console.log(dinnerModel.getNumberOfGuests());
-	dinnerModel.setNumberOfGuests(2);
-
-
-	dinnerModel.addDishToMenu(3);
-	dinnerModel.addDishToMenu(2);
-	dinnerModel.getTotalMenuPrice();
-	dinnerModel.getFullMenu();
-	dinnerModel.getSelectedDish("starter");
-
-
-
-	//console.log(dinnerModel.getAllDishes());
-	//console.log("just tried to log dishes[0] from app.js");
 	
-
 	// And create the instance of ExampleView
-	var exampleView = new ExampleView($("#exampleView"));
+	var exampleView = new ExampleView($("#header"),dinnerModel);
+
+	var newDinnerView = new createNewDinnerView($("#createNewDinnerView"))
 
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
