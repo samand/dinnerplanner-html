@@ -1,5 +1,16 @@
+.grid-container{
+	display:grid;
+	grid-template-areas: 
+	'header header header header header header'
+	'subtitle subtitle subtitle subtitle subtitle subtitle'
+	'left main main main main right'
+	'left footer footer footer footer right';
+	grid-gap:10px;
+	padding:10px;
+}
+/*Present in all pages*/
 .header{
-
+	grid-area:header;
 	text-align:center;
 	background-color:#949584; 
 	height: 100px;
@@ -7,18 +18,63 @@
 	font-weight: bold;
 	font-style:italic;
 }
-
-
+/*In index */
 .createNewDinnerView{
+	grid-area:main;
 	text-align: center;
 	padding:70px;
-	height: 200px;
+	height: 150px;
 	border:3px solid green;
 }
 
-.btn{
+/*In index  */
+.newDinnerButton{
+	grid-area:footer;
 	padding:20px;
+	text-align: center;	
 }
 
+/*In selectDish */
+.myDinner-left{
+	grid-area: left;
+}
 
+/*In selectDish */
+.dishSearch{
+	grid-area:main;
+}
 
+/*In selectDish */
+.displayDishes{
+	grid-area: footer;
+}
+
+/*In dishDetails */
+.dishInstructions{
+	grid-area: main;
+}
+
+/*In dishDetails */
+.dishIngredients{
+	grid-area: right;
+}
+
+/*In dinnerOverview */
+.subtitle{
+	grid-area: subtitle;
+}
+
+/*In dinnerOverview */
+.dinnerOverview{
+	grid-area: main;
+}
+
+/*In dinnerOverview*/
+.print-btn{
+	grid-area: footer;
+}
+
+/*In dinnerPrintout*/
+.printout{
+	grid-area: main;
+}

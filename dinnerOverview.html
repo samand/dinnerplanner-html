@@ -4,28 +4,29 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dinner planner - Find a dish</title>
+    <title>Dinner Overview - Dinner planner</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="style.css"> <!--"http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" -->
   </head>
 
 
   <body>
-    <div class="header">
-      <h1>Dinner planner</h1>
-    </div>
+    <div class="grid-container">
+      <div class="header">
+        <h1>Dinner planner</h1>
+      </div>
+      <div class ="subtitle">
+        At the top:
+        My dinner: how many people are the recipe and price for? To the right, a button that says "Go back and edit dinner"
+        Doesn't need to be very dynamic.
+      </div>
 
-    <div class="dinnerSummary">
-      Contents of my dinner.
-      This has to be to the left. 
-    </div>
-
-    <div class="dishSearch">
-      Find a dish, enter keywords, have a dropdown menu and a search button
-    </div>
-
-    <div>
-      Display dishes. Will have to contain a bunch of views.
+      <div class="dinnerOverview">
+        Display each dish on the menu with price and a total.
+      </div>
+      <div class=print-btn>
+        Finally a button that says "Print full recipe"
+      </div>
     </div>
 
     <!-- jQuery -->
