@@ -4,8 +4,8 @@ $(function() {
 	
 	// And create the instance of ExampleView
 	var exampleView = new ExampleView($("#header"),dinnerModel);
-
-	var newDinnerView = new createNewDinnerView($("#createNewDinnerView"))
+	var sideView = new myDinnerLeftView($("#myDinnerLeft"),dinnerModel);
+	console.log("fdjsaklöfjsdaklöfjkaldös")
 
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to

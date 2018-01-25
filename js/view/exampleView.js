@@ -55,4 +55,3 @@ var ExampleView = function (container, model) {
 	numberOfGuests.html(model.getNumberOfGuests());
 	
 }
- 
