@@ -3,7 +3,7 @@ $(function() {
 	var dinnerModel = new DinnerModel();
 	console.log("In app.js. Number of guests: ",dinnerModel.getNumberOfGuests());
 
-	var sideView = new myDinnerLeftView($("#second-page-body"),dinnerModel);
+	var sideView = new myDinnerLeftView($("#menuSummaryLeft"),dinnerModel);
 
 
 
