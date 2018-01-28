@@ -1,8 +1,9 @@
 $(function() {
 	//We instantiate our model
 	var dinnerModel = new DinnerModel();
-	console.log(dinnerModel.getNumberOfGuests());
-	var sideView = new myDinnerLeftView($("#myDinnerLeft"),dinnerModel);
+	console.log("In app.js. Number of guests: ",dinnerModel.getNumberOfGuests());
+
+	var sideView = new myDinnerLeftView($("#second-page-body"),dinnerModel);
 
 
 

@@ -1,6 +1,8 @@
 var myDinnerLeftView = function (container, model) {
-	console.log("fajfdklajfdksl",model.getNumberOfGuests());
-	var numberOfGuests = container.find("#myDinnerLeft");
-	console.log(numberOfGuests);
-	console.log(numberOfGuests.child);
+	//We've got a container, a div or similar, and a model with some functionality.
+	//We can now use the container to find some element inside it and change it using the functions in the model. 
+	var numberOfGuests = container.find("#myDinnerLeftID");
+	//console.log(typeof myLeft);
+	numberOfGuests.html(model.getNumberOfGuests());
+	//console.log(myLeft);
 }
