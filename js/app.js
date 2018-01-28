@@ -1,11 +1,15 @@
 $(function() {
 	//We instantiate our model
 	var dinnerModel = new DinnerModel();
+	console.log(dinnerModel.getNumberOfGuests());
+	var sideView = new myDinnerLeftView($("#myDinnerLeft"),dinnerModel);
+
+
+
+
 	
 	// And create the instance of ExampleView
-	var exampleView = new ExampleView($("#header"),dinnerModel);
-	var sideView = new myDinnerLeftView($("#myDinnerLeft"),dinnerModel);
-	console.log("fdjsaklöfjsdaklöfjkaldös")
+	// var exampleView = new ExampleView($("#header"),dinnerModel);
 
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
