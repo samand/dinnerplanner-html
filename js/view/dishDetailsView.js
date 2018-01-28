@@ -23,37 +23,35 @@ var DishDetailsView =function(container,model){
 
 	//Very possible that this will need to be put into a separate view
 	//Create a list of ingredients to be displayed in a box. 
+	console.log("line 26 detailsview");
 	this.dishIngredients = container.find("#DishIngredients");
 	for (key in this.dish.ingredients){
 		this.ingr = this.dish.ingredients[key]; //For readability
 
-		//For each ingredient, create a div element
-		this.div = document.createElement('div');
-		//this.div.innerHTML = "things";
-		//console.log(this.div);
-		this.dishIngredients[0].appendChild(this.div);
-		//console.log(this.dishIngredients[0]);
+		//For each ingredient, create a tr element
+		this.row = document.createElement('tr');
+		this.dishIngredients[0].appendChild(this.row);
 		
 		//For name, quantity, unit and price, create a div, set innerHTML and attach to div
-		this.ingr_name = document.createElement('div');
+		this.ingr_name = document.createElement('th');
 		this.ingr_name.innerHTML = this.ingr.name;
-		this.div.appendChild(this.ingr_name);
+		this.row.appendChild(this.ingr_name);
 
-		this.ingr_quantity = document.createElement('div');
+		this.ingr_quantity = document.createElement('th');
 		console.log(this.ingr.quantity)
 		this.ingr_quantity.innerHTML = this.ingr.quantity;
-		this.div.appendChild(this.ingr_quantity);
+		this.row.appendChild(this.ingr_quantity);
 
-		this.ingr_unit = document.createElement('div');
+		this.ingr_unit = document.createElement('th');
 		if (this.ingr.unit ==""){
 			console.log("There was no unit")
 		}
 		this.ingr_unit.innerHTML = this.ingr.unit;
-		this.div.appendChild(this.ingr_unit);
+		this.row.appendChild(this.ingr_unit);
 
-		this.ingr_price = document.createElement('div');
+		this.ingr_price = document.createElement('th');
 		this.ingr_price.innerHTML = this.ingr.price;
-		this.div.appendChild(this.ingr_price);
+		this.row.appendChild(this.ingr_price);
 		
 
 	}
