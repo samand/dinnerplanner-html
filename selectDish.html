@@ -7,29 +7,50 @@
     <title>Select dish - Dinner planner</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="style.css"> <!--"http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
   </head>
 
 
   <body>
-    <div class="grid-container">
-      <div class="header">
-        <h1>Dinner planner</h1>
-      </div>
-      <div class="myDinnerLeft">
-        <h2>My Dinner</h2>
-        People <span id="numberOfGuests"></span>
-        Dish Name   Cost
-        Some view of each dish on my menu. Reference myDinnerLeftView.js
+
+  <div class="jumbotron text-center">
+    <h1>Dinner Planner</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+
       </div>
 
-      <div class="dishSearch">
-        Find a dish, enter keywords, have a dropdown menu and a search button
-      </div>
+      <div class="col-sm-9" id="second-page-body">
+        <div class="row" style= "height:30%">
 
-      <div class="displayDishes" >
-        Display dishes. Will have to contain a bunch of views.
+            <div class="input-group add-on" style= "float: left; margin-right: 5%">
+              <input class="form-control" placeholder="Enter key words" name="srch-term" id="srch-term" type="text">
+            </div>
+
+            <div class="dropdown" style= "float: left; margin-right: 5%">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">All
+              <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Main Course</a></li>
+              <li><a href="#">Side Dish</a></li>
+              <li><a href="#">Dessert</a></li>
+              <li><a href="#">Appetizer</a></li>
+            </ul>
+          </div>
+
+           <button type="button" class="btn btn-warning" id="SearchButton">Search</button>
+        </div>
+
+        <div class="row" style = "height: 70%; background: antiquewhite">
+          <img class="card-img-top" src="images\bakedbrie.jpg" alt="Card image cap">
+
+          </div>
+        </div>
       </div>
     </div>
+
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
