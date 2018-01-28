@@ -70,6 +70,7 @@ var DinnerModel = function() {
 		return ingredientsArray;
 	}
 
+
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
 		var totalSum = 0;
