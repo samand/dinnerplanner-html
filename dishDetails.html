@@ -1,44 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dish details - Dinner planner</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="style.css"> <!--"http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" -->
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dish details - Dinner planner</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="style.css"> <!--"http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" -->
+</head>
 
 
-  <body>
-    <div class="grid-container">
-      <div class="header">
-        <h1>Dinner planner</h1>
-      </div>
-
-      <div class="myDinner-left">
-        Contents of my dinner.
-        This has to be to the left. 
-      </div>
-      <div class="dishInstructions">
-        Here there should be a picture, and below that the instructions for the recipe.
-        Finally a button that says "Back to search"
-      </div>
-      <div class="dishIngredients">
-        This should be a list of ingredients in a box. Maybe a table even. 
-        At the bottom should be a button that says "Add to menu" and the total price of the dish. 
-      </div>
+<body>
+  <div class="grid-container">
+    <div class="header">
+      <h1>Dinner planner</h1>
     </div>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <div id="DinnerSidebar">
+      Number of guests: <span id="NumberOfGuests">Couldn't find how many guests there should be.</span>
+      <button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
+      <button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
+      Price of menu: <span id="PriceOfMenu">Couldn't find the price of the menu.</span>
+    </div>
 
-	<!-- The application JavaScript code -->
-	<script src="js/app.js"></script>
-	<script src="js/model/dinnerModel.js"></script>
-	<script src="js/view/exampleView.js"></script>
-	<!-- TODO: Here you should include JS code for your other views -->
-  </body>
+
+    <div id="DishInstructions">
+
+      <h2><div id="DishTitle">Dish title.</div></h2>
+      <!--<img src="images/toast.jpg" width="140" height="140">-->
+      <div id="DishImage"></div>
+      <div id="DishDescription"></div>
+      <button id="ToSearch">Back to search</button>
+    </div>
+
+    <div id="DishIngredients">
+      This should be a list of ingredients in a box. Maybe a table even. 
+      At the bottom should be a button that says "Add to menu" and the total price of the dish. 
+    </div>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+  <!-- The application JavaScript code -->
+  <script src="js/app.js"></script>
+  <script src="js/model/dinnerModel.js"></script>
+  <script src="js/view/exampleView.js"></script>
+  <script src="js/view/myDinnerSidebarView.js"></script>
+  <script src="js/view/dishDetailsView.js"></script>
+  <!-- TODO: Here you should include JS code for your other views -->
+</body>
 </html>

@@ -3,7 +3,9 @@ $(function() {
 	var dinnerModel = new DinnerModel();
 	//console.log("In app.js. Number of guests: ",dinnerModel.getNumberOfGuests());
 
-	var myDinnerSidebar = new MyDinnerSidebar($("#dinner-sidebar"),dinnerModel); //menuSummaryLeft
+	var myDinnerSidebar = new MyDinnerSidebarView($("#DinnerSidebar"),dinnerModel);
+	var dishDetails = new DishDetailsView($("#DishInstructions"),dinnerModel);
+
 
 
 
