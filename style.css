@@ -1,11 +1,41 @@
 
 /*Present in all pages*/
 
-
-#second-page-body{
-	border: black;
-	border-bottom-width: thin;
+#sidebar {
+	background-color: white;
+	overflow: hidden;
+	height: 100%;
+	padding-bottom: 100%;
+	margin-bottom: -100%;
 }
+
+#sidebar .noMargin {
+	margin: 0 0 0 0;
+}
+
+
+#sidebar .header1 {
+	background-color: #c0c0c0;
+	border: 2px black solid;
+	border-left: 0;
+	border-right: 0;
+}
+
+
+.border {
+	border: 2px black solid;
+}
+
+#sidebar {
+	border-bottom: 0;
+	border-left: 0;
+}
+.container-fluid#info-container {
+	margin-top: 100px;
+	margin-left: 100px
+}
+
+
 
 #WelcomeButton{
 	margin-left: 30%;
