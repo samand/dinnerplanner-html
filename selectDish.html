@@ -1,90 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Select dish - Dinner planner</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="style.css"> <!--"http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" -->
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-  </head>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Select dish - Dinner planner</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="style.css"> <!--"http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" -->
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="jumbotron text-center">
+		<h1>Dinner Planner</h1>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<!--SIDEBAR-->
+			<div class="col-md-2 border" id="DinnerSidebar">
+				<h3>My Dinner</h3>
+				<p>Number Of Guests: <span id="NumberOfGuests"></span>
+					<div>
+						<button id="removeGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
+						<button id="addGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
+					</div>
+				</p>
+				<div class="row header1">
+					<div class="col-md-12">
+						<p class="alignLeft noMargin">Dish Name</p>
+						<p class="alignRight noMargin">Cost</p>
+					</div>
+				</div>
+			</div>
+			<!--END SIDEBAR-->
+
+			
+			<div class="col-sm-9" id="second-page-body">
+				<!--DISH SEARCH -->
+				<div class="row" style= "height:30%">
+					<div>
+						<h3>Find a dish</h3>
+					</div>
+					<div class="input-group add-on" style= "float: left; margin-right: 5%">
+						<input class="form-control" placeholder="Enter key words" name="srch-term" id="srch-term" type="text">
+					</div>
+					<div class="dropdown" style= "float: left; margin-right: 5%">
+						<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">All
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="#">Main Course</a></li>
+							<li><a href="#">Side Dish</a></li>
+							<li><a href="#">Dessert</a></li>
+							<li><a href="#">Appetizer</a></li>
+						</ul>
+					</div>
+					<button type="button" class="btn btn-warning" id="SearchButton">Search</button>
+				</div>
+				<!--END DISH SEARCH -->
+
+				<!--SEARCH RESULTS -->
+
+				<!--END SEARCH RESULTS -->
+
+				<!--FOOTER? -->
+
+				<div class="row" style = "height: 70%; background: antiquewhite">
+					<img class="card-img-top" src="images\bakedbrie.jpg" alt="Card image cap">
+				</div>
+				<!--END FOOTER? -->
+			</div>
+		</div>
+	</div>
 
 
-  <body>
-
-  <div class="jumbotron text-center">
-    <h1>Dinner Planner</h1>
-  </div>
-          <div class="container-fluid">
-              <div class="row">
-                  <!--Left column test-->
-                  <div class="col-md-2 border" id="sidebar">
-                      <h2>My Dinner</h2>
-                      <p>Number Of Guests: <span id="nrGuests"></span>
-                      <div>
-                          <button id="removeGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
-                          <button id="addGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
-                      </div>
-                      </p>
-                      <div class="row header1">
-                          <div class="col-md-12">
-                              <p class="alignLeft noMargin">Dish Name</p>
-                              <p class="alignRight noMargin">Cost</p>
-                          </div>
-                      </div>
-
-      </div>
-
-      <div class="col-sm-9" id="second-page-body">
-        <div class="row" style= "height:30%">
-
-            <div class="input-group add-on" style= "float: left; margin-right: 5%">
-              <input class="form-control" placeholder="Enter key words" name="srch-term" id="srch-term" type="text">
-            </div>
-
-            <div class="dropdown" style= "float: left; margin-right: 5%">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">All
-              <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <li><a href="#">Main Course</a></li>
-              <li><a href="#">Side Dish</a></li>
-              <li><a href="#">Dessert</a></li>
-              <li><a href="#">Appetizer</a></li>
-            </ul>
-          </div>
-
-           <button type="button" class="btn btn-warning" id="SearchButton">Search</button>
-        </div>
-
-        <!--This section should be placed in a left section. But actually functionality will probably work with it. -->
-        <div id="DinnerSidebar">
-            Number of guests: <span id="NumberOfGuests">Couldn't find how many guests there should be.</span>
-            <button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
-            <button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
-            Price of menu: <span id="PriceOfMenu">Couldn't find the price of the menu.</span>
-          </div>
-        </div>
-
-        <div class="row" style = "height: 70%; background: antiquewhite">
-          <img class="card-img-top" src="images\bakedbrie.jpg" alt="Card image cap">
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
 	<!-- The application JavaScript code -->
 	<script src="js/app.js"></script>
 	<script src="js/model/dinnerModel.js"></script>
 	<script src="js/view/exampleView.js"></script>
-  <script src="js/view/myDinnerSidebarView.js"></script>
-  <script src="js/view/dishDetailsView.js"></script>
+	<script src="js/view/myDinnerSidebarView.js"></script>
+	<script src="js/view/dishDetailsView.js"></script>
 	<!-- TODO: Here you should include JS code for your other views -->
-  </body>
+</body>
 </html>
