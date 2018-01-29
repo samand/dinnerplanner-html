@@ -8,7 +8,7 @@ var DishDetailsView =function(container,model){
 	this.dishTitle = container.find("#DishTitle");
 	this.dishTitle.html(this.dish.name);
 
-	//Insert image
+	//Get image
 	this.dishImage = container.find("#DishImage");
 	this.imgPath ="images/".concat(this.dish.image);
 	//Create the image node and attach to parentnode
@@ -23,7 +23,6 @@ var DishDetailsView =function(container,model){
 
 	//Very possible that this will need to be put into a separate view
 	//Create a list of ingredients to be displayed in a box. 
-	console.log("line 26 detailsview");
 	this.dishIngredients = container.find("#DishIngredients");
 	for (key in this.dish.ingredients){
 		this.ingr = this.dish.ingredients[key]; //For readability
