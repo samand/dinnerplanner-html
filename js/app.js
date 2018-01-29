@@ -5,7 +5,7 @@ $(function() {
 
 	var myDinnerSidebar = new MyDinnerSidebarView($("#DinnerSidebar"),dinnerModel);
 	//var dishDetails = new DishDetailsView($("#DishInstructions"),dinnerModel);
-	var searchResults = new SearchResults($("#SearchResults"),dinnerModel);
+	var searchResults = new SearchResultsView($("#SearchResults"),dinnerModel);
 
 
 

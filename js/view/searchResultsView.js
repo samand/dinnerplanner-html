@@ -1,14 +1,12 @@
-var SearchResults = function (container, model) {
-	console.log("Reached SearchResults");
-	//console.log(container[0].className);
-	console.log(typeof container);
-	//Get dish from model
+var SearchResultsView = function (container, model) {
+	//TODO Get dish from model
 	this.searchResults=[1,2,3];
+
 	for (key in this.searchResults){
 		//For each search result, get the dish 
 		this.dishID = this.searchResults[key];
 		this.dish = model.getDish(this.dishID);
-		//Create a div element with the right class -- shouldn't be done here I guess...
+		//Create a div element with the right class -- shouldn't be done here I guess...? rather some identifier
 		this.div = document.createElement('div');
 		this.div.className = "col-xs-6 col-md-4 border";
 
@@ -24,9 +22,8 @@ var SearchResults = function (container, model) {
 		this.dishName = document.createElement("div");
 		this.dishName.innerHTML = this.dish.name;
 		this.div.appendChild(this.dishName);
-		console.log(this.div);
 
+		//Attach to the parent node - the first (and hopefully only) node in the container
 		container[0].appendChild(this.div);
 	}
-
 }
