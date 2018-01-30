@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dinner Overview - Dinner planner</title>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dish details - Dinner planner</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="style.css"> <!--"http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" -->
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+</head>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css"> <!--"http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" -->
-  </head>
+<body>
+	<div class="jumbotron text-center">
+		<h1>Dinner Planner</h1>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-3 border"><h3>My dinner: <span id="NumberOfGuests"></span> people </h3></div>
+			<button type="button" class="btn btn-warning col-md-2 col-md-offset-7">Go back and edit menu</button>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row" id="dishIcons"></div>
+	</div>
 
+	<div class="dinnerOverview">
+		Display each dish on the menu with price and a total.
+	</div>
+	<div class=print-btn>
+		Finally a button that says "Print full recipe"
+	</div>
 
-  <body>
-    <div class="grid-container">
-      <div class="header">
-        <h1>Dinner planner</h1>
-      </div>
-      <div class ="subtitle">
-        At the top:
-        My dinner: how many people are the recipe and price for? To the right, a button that says "Go back and edit dinner"
-        Doesn't need to be very dynamic.
-      </div>
-
-      <div class="dinnerOverview">
-        Display each dish on the menu with price and a total.
-      </div>
-      <div class=print-btn>
-        Finally a button that says "Print full recipe"
-      </div>
-    </div>
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	<!-- jQuery and Bootstrap-->
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
 	<!-- The application JavaScript code -->
 	<script src="js/app.js"></script>
 	<script src="js/model/dinnerModel.js"></script>
-	<script src="js/view/exampleView.js"></script>
-	<!-- TODO: Here you should include JS code for your other views -->
-  </body>
+
+	<script src="js/view/sidebarView.js"></script>
+	<script src="js/view/dishDetailsView.js"></script>
+	<script src="js/view/dishIconsView.js"></script>
+
+</body>
 </html>

@@ -1,11 +1,14 @@
 $(function() {
-	//We instantiate our model
+	//Instantiating models
 	var dinnerModel = new DinnerModel();
-	//console.log("In app.js. Number of guests: ",dinnerModel.getNumberOfGuests());
 
-	var myDinnerSidebar = new MyDinnerSidebarView($("#DinnerSidebar"),dinnerModel);
-	//var dishDetails = new DishDetailsView($("#DishInstructions"),dinnerModel);
-	var searchResults = new SearchResultsView($("#SearchResults"),dinnerModel);
+	//Instantiating views
+
+	var myDinnerSidebar = new VariableView(dinnerModel);
+	var dishDetails = new DishDetailsView(dinnerModel);
+	var dishIngredients = new DishIngredients($("#DishInstructions"),dinnerModel);
+	//var searchResults = new SearchResultsView(dinnerModel); //NOT RELEVANT
+	var dishIcons = new DishIconView(dinnerModel);
 
 
 
