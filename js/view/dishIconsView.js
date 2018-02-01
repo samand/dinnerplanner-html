@@ -1,22 +1,21 @@
-var DishIconView = function(model){
-	if(document.getElementById("dishIcons")){
-		this.dishesToBeDisplayed = [1,2,3];
-		for(key in this.dishesToBeDisplayed){
-			//Create placeholders and set formatting
-			this.div = document.createElement("div");
-			this.div.className = "col-xs-6 col-md-4 border";
-			this.img = document.createElement("img");
-			this.dishName = document.createElement("div");
+var DishIconView = function(container, model){
+	var dishesToBeDisplayed = [1,2,3];
+	console.log(dishesToBeDisplayed.length);
+	for(key in dishesToBeDisplayed){
+		//Create placeholders and set formatting
+		var div = document.createElement("div");
+		div.className = "col-xs-6 col-md-4 border";
+		var img = document.createElement("img");
+		var dishName = document.createElement("div");
 
-			//Get dish and insert relevant things into the placeholders
-			this.dish = model.getDish(this.dishesToBeDisplayed[key]);
-			this.img.src = "images/".concat(this.dish.image);
-			this.dishName.innerHTML = this.dish.name;
+		//Get dish and insert relevant things into the placeholders
+		var dish = model.getDish(dishesToBeDisplayed[key]);
+		img.src = "images/".concat(dish.image);
+		dishName.innerHTML = dish.name;
 
-			//Attach to parents
-			this.div.appendChild(this.img);
-			this.div.appendChild(this.dishName);
-			document.getElementById("dishIcons").appendChild(this.div);
-		}
+		//Attach to parents
+		div.appendChild(img);
+		div.appendChild(dishName);
+		document.getElementById("dishIcons").appendChild(div);
 	}
 }

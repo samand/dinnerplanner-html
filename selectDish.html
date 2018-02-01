@@ -17,31 +17,34 @@
 	<div class="container-fluid">
 		<div class="row">
 			<!--SIDEBAR-->
-			<div class="col-sm-3 border" id="DinnerSidebar">
+			<div class="col-sm-3 col-xs-12 border" id="sidebar">
 				<h3>My Dinner</h3>
-				<p>Number Of Guests: <span id="NumberOfGuests"></span>
+				<p>Number Of Guests: <span id="numberOfGuests"></span>
 					<div>
 						<button id="removeGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
 						<button id="addGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
 					</div>
 				</p>
 				<div class="row border">
-					<div class="col-sm-6 alignLeft noMargin">
-						<p>[Dish Name]</p>
+					<div class="col-xs-6 alignLeft noMargin">
+						<h4>Dishname</h4>
 					</div>
-					<div class="col-sm-6 alignRight noMargin">
-						<p>[Price]</p>
+					<div class="col-xs-6 alignRight noMargin">
+						<h4>Price</h4>
 					</div>
+				</div>
+				<div class="row border" id="menuItems">
 				</div>
 				<div class="row">
-					<div class="col-sm-6">Price of menu</div>
-					<div class="col-sm-6" id="PriceOfMenu" >[Display price here]</div>
+					<div class="col-sm-6 col-xs-6">Price of menu</div>
+					<div class="col-sm-6 col-xs-6" id="priceOfMenu" >[Display price here]</div>
 				</div>
+				<button type="button" class="btn btn-warning btn-block" id="ConfirmDinner">Confirm dinner</button>
 			</div>
 			<!--END SIDEBAR-->
 
 			
-			<div class="col-sm-9" id="second-page-body">
+			<div class="col-sm-9 col-xs-12" id="second-page-body">
 				<!--DISH SEARCH -->
 				<div class="row">  <!--style= "height:80%"-->
 					<div>

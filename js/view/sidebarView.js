@@ -1,27 +1,27 @@
-/*var MyDinnerSidebarView = function (model) {
-	//We've got a container, a div or similar, and a model with some functionality.
-	//We can now use the container to find some element inside it and change it using the functions in the model. 
-	if(document.getElementById("NumberOfGuests")){
-		this.numberOfGuests = document.getElementById("NumberOfGuests");
-		this.numberOfGuests.innerHTML = model.getNumberOfGuests();
+var SidebarView = function(container, model){
+	var menu = model.getMenu();
+	var numberOfGuests = container.find("#numberOfGuests");
+	numberOfGuests.html(model.getNumberOfGuests());
 
-		//this.plusButton = container.find("#plusGuest");
-		//this.minusButton = container.find("#minusGuest");
+	var priceOfMenu = container.find("#priceOfMenu");
+	priceOfMenu.html(model.getTotalMenuPrice());
 
-		this.priceOfMenu = document.getElementById("PriceOfMenu");
-		this.priceOfMenu.innerHTML= model.getTotalMenuPrice();
-	}
-}
-*/
-var VariableView = function(model){
-	if(document.getElementById("NumberOfGuests")){
-		this.numberOfGuests = document.getElementById("NumberOfGuests");
-		this.numberOfGuests.innerHTML = model.getNumberOfGuests();
-	}
-	if(document.getElementById("PriceOfMenu")){
-		this.priceOfMenu = document.getElementById("PriceOfMenu");
-		this.priceOfMenu.innerHTML= model.getTotalMenuPrice();
-	}
-	
+	var itemDisplay = container.find("#menuItems");
+	for(key in menu){
+		var dish = model.getDish(menu[key]);
 
+		var divName = document.createElement("div");
+		divName.className = "col-xs-6 noMargin";
+		divName.innerHTML = dish.name;
+		itemDisplay.append(divName);
+
+		var divPrice = document.createElement("div");
+		divPrice.className = "col-xs-6 noMargin";
+		divPrice.innerHTML = model.getDishPrice(menu[key]);
+		itemDisplay.append(divPrice);
+
+		var clear = document.createElement("div");
+		clear.className = "clearfix";
+		itemDisplay.append(clear);
+	}
 }

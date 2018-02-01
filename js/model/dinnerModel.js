@@ -4,7 +4,7 @@ var DinnerModel = function() {
 	// and selected dishes for the dinner menu
 
 	this.numberOfGuests = 4;
-	this.menuArray=[];
+	this.menuArray=[1,2,3];
 
 	this.incrementNumberOfGuests = function () {
 		this.numberOfGuests++;
@@ -68,6 +68,18 @@ var DinnerModel = function() {
 		}
 		console.log("Returning all ingredients on the menu.")
 		return ingredientsArray;
+	}
+
+	this.getDishPrice = function(id){
+		var dishPrice = 0;
+		var ingredients = this.getIngredientsOfDish(id);
+		for (key in ingredients){
+			var quantity = ingredients[key].quantity;
+			var price = ingredients[key].price;
+			dishPrice += quantity*price;
+		}
+		dishPrice *= this.getNumberOfGuests();
+		return dishPrice
 	}
 
 

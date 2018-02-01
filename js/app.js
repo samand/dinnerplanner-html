@@ -4,11 +4,11 @@ $(function() {
 
 	//Instantiating views
 
-	var myDinnerSidebar = new VariableView(dinnerModel);
-	var dishDetails = new DishDetailsView(dinnerModel);
+	var sidebar = new SidebarView($("#sidebar"),dinnerModel);
+//	var dishIcons = new DishIconView($("#dishIcons"),dinnerModel);
+	var dishDetails =new DishDetailsView($("#dishInstructions"),dinnerModel);
 	var dishIngredients = new DishIngredients($("#DishInstructions"),dinnerModel);
 	//var searchResults = new SearchResultsView(dinnerModel); //NOT RELEVANT
-	var dishIcons = new DishIconView(dinnerModel);
 
 
 

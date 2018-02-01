@@ -1,21 +1,18 @@
-var DishDetailsView =function(model){
-	
-	if(document.getElementById("DishInstructions")){
-		//Get dish from model
-		this.dishID = 1; //Will have to be replaced with proper input
-		this.dish = model.getDish(this.dishID);
-		//Set dish title
-		this.dishTitle = document.getElementById("DishTitle");
-		this.dishTitle.innerHTML = this.dish.name;
-		//Image
-		this.dishImage = document.getElementById("DishImage");
-		this.img = document.createElement("img");
-		this.img.src = "images/".concat(this.dish.image);
-		this.dishImage.appendChild(this.img);
-		//Dish description
-		this.dishDescription = document.getElementById("DishDescription");
-		this.dishDescription.InnerHTML = this.dish.description;
-	}
+var DishDetailsView =function(container, model){
+	//Get dish from model
+	var dishID=1;
+	var dish = model.getDish(dishID);
+	//set dish title
+	var dishTitle = container.find("#dishTitle");
+	dishTitle.html(dish.name);
+	//Iimage
+	var dishImage = container.find("#dishImage");
+	var img = document.createElement("img");
+	img.src = "images/".concat(dish.image);
+	dishImage.append(img);
+	//Dish description
+	var dishDescription = container.find("#dishDescription");
+	dishDescription.html(dish.description);
 }
 
 var DishIngredients = function(container, model){
