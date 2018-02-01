@@ -17,7 +17,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<!--SIDEBAR-->
-			<div class="col-md-2 border" id="DinnerSidebar">
+			<div class="col-sm-3 border" id="DinnerSidebar">
 				<h3>My Dinner</h3>
 				<p>Number Of Guests: <span id="NumberOfGuests"></span>
 					<div>
@@ -25,24 +25,29 @@
 						<button id="addGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
 					</div>
 				</p>
-				<div class="row header1">
-					<div class="col-md-12">
-						<p class="alignLeft noMargin">Dish Name</p>
-						<p class="alignRight noMargin">Cost</p>
+				<div class="row border">
+					<div class="col-sm-6 alignLeft noMargin">
+						<p>[Dish Name]</p>
+					</div>
+					<div class="col-sm-6 alignRight noMargin">
+						<p>[Price]</p>
 					</div>
 				</div>
-				<div id="PriceOfMenu">jfkdsalöfjkldaöjfdkslaöfjdkaslö</div>
+				<div class="row">
+					<div class="col-sm-6">Price of menu</div>
+					<div class="col-sm-6" id="PriceOfMenu" >[Display price here]</div>
+				</div>
 			</div>
 			<!--END SIDEBAR-->
 
 			
 			<div class="col-sm-9" id="second-page-body">
 				<!--DISH SEARCH -->
-				<div class="row" style= "height:30%">
+				<div class="row">  <!--style= "height:80%"-->
 					<div>
 						<h3>Find a dish</h3>
 					</div>
-					<div class="input-group add-on" style= "float: left; margin-right: 5%">
+					<div class="input-group dropdown" style= "float: left; margin-right: 5%">
 						<input class="form-control" placeholder="Enter key words" name="srch-term" id="srch-term" type="text">
 					</div>
 					<div class="dropdown" style= "float: left; margin-right: 5%">
@@ -61,8 +66,8 @@
 				<!--END DISH SEARCH -->
 
 				<!--SEARCH RESULTS -->
-				<div class="container-fluid">
-					<div class="row" id="dishIcons"></div>
+				<div class="row">
+					<div id="dishIcons"></div>
 				</div>
 
 				<!--END SEARCH RESULTS -->
