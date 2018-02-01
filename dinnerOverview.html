@@ -14,15 +14,20 @@
 	<div class="jumbotron text-center">
 		<h1>Dinner Planner</h1>
 	</div>
+	<!--SECONDARY HEADER-->
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-3 border"><h3>My dinner: <span id="NumberOfGuests"></span> people </h3></div>
-			<button type="button" class="btn btn-warning col-md-2 col-md-offset-7">Go back and edit menu</button>
+			<div class="col-md-4 col-xs-7 border"><h3>My dinner: <span id="numberOfGuests"></span> people </h3></div>
+			<button type="button" class="btn btn-warning col-md-3 col-md-offset-5 col-xs-5">Go back and edit menu</button>
 		</div>
 	</div>
+	<!--END SECONDARY HEADER-->
+
+	<!--MENU OVERVIEW-->
 	<div class="container-fluid">
-		<div class="row" id="dishIcons"></div>
+		<div class="row" id="menuOverview"></div>
 	</div>
+	<!--END MENU OVERVIEW-->
 	<button type="button" class="btn btn-warning" id="PrintRecipe">Print full recipe</button>
 
 	<!-- jQuery and Bootstrap-->
@@ -34,8 +39,10 @@
 	<script src="js/model/dinnerModel.js"></script>
 
 	<script src="js/view/sidebarView.js"></script>
-	<script src="js/view/dishDetailsView.js"></script>
+	<script src="js/view/dishIngredientsView.js"></script>
 	<script src="js/view/dishIconsView.js"></script>
+	<script src="js/view/dishInstructionsView.js"></script>
+	<script src="js/view/menuOverviewView.js"></script>
 
 </body>
 </html>
