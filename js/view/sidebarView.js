@@ -3,9 +3,6 @@ var SidebarView = function(container, model){
 	var numberOfGuests = container.find("#numberOfGuests");
 	numberOfGuests.html(model.getNumberOfGuests());
 
-	var priceOfMenu = container.find("#priceOfMenu");
-	priceOfMenu.html(model.getTotalMenuPrice());
-
 	var itemDisplay = container.find("#menuItems");
 	for(key in menu){
 		var dish = model.getDish(menu[key]);
@@ -24,4 +21,7 @@ var SidebarView = function(container, model){
 		clear.className = "clearfix";
 		itemDisplay.append(clear);
 	}
+
+	var priceOfMenu = container.find("#priceOfMenu");
+	priceOfMenu.html(model.getTotalMenuPrice());
 }

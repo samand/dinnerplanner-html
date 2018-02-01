@@ -5,9 +5,9 @@ $(function() {
 	//Instantiating views
 
 	var sidebar = new SidebarView($("#sidebar"),dinnerModel);
-//	var dishIcons = new DishIconView($("#dishIcons"),dinnerModel);
-	var dishDetails =new DishDetailsView($("#dishInstructions"),dinnerModel);
-	var dishIngredients = new DishIngredients($("#DishInstructions"),dinnerModel);
+	var dishInstructions =new DishInstructionsView($("#dishInstructions"),dinnerModel);
+	var dishIngredients = new DishIngredientsView($("#dishIngredients"),dinnerModel);
+	var dishIcons = new DishIconView($("#dishIcons"),dinnerModel);
 	//var searchResults = new SearchResultsView(dinnerModel); //NOT RELEVANT
 
 
