@@ -7,8 +7,9 @@ $(function() {
 	var sidebar = new SidebarView($("#sidebar"),dinnerModel);
 	var menuOverview = new MenuOverviewView($("#menuOverview"),dinnerModel);
 	var dishInstructions =new DishInstructionsView($("#dishInstructions"),dinnerModel);
-	var dishIngredients = new DishIngredientsView($("#dishIngredients"),dinnerModel);
-	var dishIcons = new DishIconView($("#dishIcons"),dinnerModel);
+	//var dishIngredients = new DishIngredientsView($("#dishIngredients"),dinnerModel);
+	var searchResults = new SearchResultsView($("#searchResults"),dinnerModel);
+	var menuPrintout = new MenuPrintoutView($("#menuPrintout"),dinnerModel);
 	
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to

@@ -1,5 +1,7 @@
-var DishIconView = function(container, model){
+var SearchResultsView = function(container, model){
 	var dishesToBeDisplayed = [1,2,3];
+	var dishDescription = container.find("#dishIcons");
+
 	for(key in dishesToBeDisplayed){
 		//Create placeholders and set formatting
 		var div = document.createElement("div");
@@ -15,6 +17,6 @@ var DishIconView = function(container, model){
 		//Attach to parents
 		div.appendChild(img);
 		div.appendChild(dishName);
-		document.getElementById("dishIcons").appendChild(div);
+		dishDescription.append(div);
 	}
 }
