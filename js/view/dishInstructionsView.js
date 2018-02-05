@@ -1,4 +1,17 @@
 var DishInstructionsView =function(container, model){
+
+	//Lab 2
+	this.update = function(){
+		//TODO
+		/*
+		Repopulate the view from the model.
+		*/
+	}
+	
+	model.addObserver(this);
+
+	/////////////
+
 	//Get dish from model
 	var dishID=1;
 	var dish = model.getDish(dishID);

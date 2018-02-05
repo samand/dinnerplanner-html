@@ -1,5 +1,23 @@
 //DinnerModel Object constructor SAVVAS
 var DinnerModel = function() {
+
+	var observers =[];
+	//Lab 2
+	this.addObserver = function(observer){
+		//TODO
+		//observers.append(observer) or something like that
+	}
+
+	this.notifyObservers = function(obj){
+		//TODO
+		/*
+		All functions in the model that modify the model must call this function.
+		for obs in observers:
+			notify(obs, obj)
+		*/
+	}
+
+
 	//TODO Lab 1 implement the data structure that will hold number of guest
 	// and selected dishes for the dinner menu
 

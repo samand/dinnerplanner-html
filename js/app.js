@@ -19,3 +19,46 @@ $(function() {
 	 */
 
 });
+
+
+//TODO
+/*
+Implement the controller for each view that has some interaction.
+Implementing event listeners etc.
+*/
+
+var showIndex = function(){
+	//TODO
+	/*
+	Show welcome text and Create New Dinner Button. 
+	Need to change that into a view.
+	*/
+}
+
+var showSelectDish = function(){
+	//TODO
+	/*
+	Show Sidebar, Dish Search and Search Results
+	*/
+}
+
+var showDishDetails = function(){
+	//TODO
+	/*
+	Show Sidebar and Dish Instructions
+	*/
+}
+
+var showMenuOverview = function(){
+	//TODO
+	/*
+	Show Menu Overview
+	*/
+}
+
+var showMenuPrintout = function(){
+	//TODO
+	/*
+	Show Menu Printout
+	*/
+}

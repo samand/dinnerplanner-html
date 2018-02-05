@@ -1,4 +1,17 @@
 var SearchResultsView = function(container, model){
+
+	//Lab 2
+	this.update = function(){
+		//TODO
+		/*
+		Repopulate the view from the model.
+		*/
+	}
+	
+	model.addObserver(this);
+
+	/////////////
+
 	var dishesToBeDisplayed = [1,2,3];
 	var dishDescription = container.find("#dishIcons");
 

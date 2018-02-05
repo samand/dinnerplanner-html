@@ -1,4 +1,17 @@
 var MenuPrintoutView = function(container, model){
+
+	//Lab 2
+	this.update = function(){
+		//TODO
+		/*
+		Repopulate the view from the model.
+		*/
+	}
+
+	model.addObserver(this);
+
+	/////////////
+
 	var menu = model.getMenu();
 
 	var numberOfGuests = container.find("#numberOfGuests");
