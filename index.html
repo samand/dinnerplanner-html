@@ -14,16 +14,144 @@
 	<div class="jumbotron text-center">
 		<h1>Dinner Planner</h1>
 	</div>
-	<!--WELCOME AND ENTER-->
-	<div class="container">
+	
+	<div class="container-fluid">
+		<!--WELCOME AND ENTER-->
 		<div class="row">
 			<div class="col-sm-offset-3 col-sm-6" id="FirstPageBody">
 				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
 				<button type="button" class="btn btn-warning" id="WelcomeButton">Create new dinner</button>
 			</div>
 		</div>
+		<!--END WELCOME AND ENTER-->
+
+		<div class="row">
+			<!--SIDEBAR-->
+			<div class="col-sm-3 col-xs-12 border" id="sidebar">
+				<h3>My Dinner</h3>
+				<p>Number Of Guests: <span id="numberOfGuests"></span>
+					<div>
+						<button id="removeGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
+						<button id="addGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
+					</div>
+				</p>
+				<div class="row border">
+					<div class="col-xs-6 alignLeft noMargin">
+						<h4>Dishname</h4>
+					</div>
+					<div class="col-xs-6 alignRight noMargin">
+						<h4>Price</h4>
+					</div>
+				</div>
+				<div class="row border" id="menuItems">
+				</div>
+				<div class="row">
+					<div class="col-sm-6 col-xs-6">Price of menu</div>
+					<div class="col-sm-6 col-xs-6" id="priceOfMenu" >[Display price here]</div>
+				</div>
+				<button type="button" class="btn btn-warning btn-block" id="ConfirmDinner">Confirm dinner</button>
+			</div>
+			<!--END SIDEBAR-->
+
+			
+			<div class="col-sm-9 col-xs-12" id="second-page-body">
+				<!--DISH SEARCH -->
+				<div class="row">
+					<div>
+						<h3>Find a dish</h3>
+					</div>
+					<div class="input-group dropdown" style= "float: left; margin-right: 5%">
+						<input class="form-control" placeholder="Enter key words" name="srch-term" id="srch-term" type="text">
+					</div>
+					<div class="dropdown" style= "float: left; margin-right: 5%">
+						<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">All
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="#">Main Course</a></li>
+							<li><a href="#">Side Dish</a></li>
+							<li><a href="#">Dessert</a></li>
+							<li><a href="#">Appetizer</a></li>
+						</ul>
+					</div>
+					<button type="button" class="btn btn-warning" id="SearchButton">Search</button>
+				</div>
+				<!--END DISH SEARCH -->
+
+				<!--SEARCH RESULTS -->
+				<div class="row">
+					<div id="dishIcons"></div>
+				</div>
+				<!--END SEARCH RESULTS -->
+
+				<!--DISH INSTRUCTIONS AND INGREDIENTS -->
+				<div class="row">
+					<div class="col-sm-4">
+						<div id="dishInstructions">
+							<h2>
+								<div  id="dishTitle"></div>
+							</h2>
+							<div    id="dishImage"></div>
+							<div    id="dishDescription"></div>
+							<button type="button" class="btn btn-warning" id="ToSearch">Back to search</button>
+						</div>
+					</div>
+					<div class="col-sm-5 border" style="background: antiquewhite">
+						<div id="dishIngredients">
+							<h3>
+								<div>Ingredients for <span id="numberOfGuests"></span> persons</div>
+							</h3>
+							<div id="ingredientsDisplay">
+								<div class="col-xs-2 noMargin"><b>Quantity</b></div>
+								<div class="col-xs-2 noMargin"><b>Unit</b></div>
+								<div class="col-xs-4 noMargin"><b>Ingredient</b></div>
+								<div class="col-xs-4 noMargin"><b>Price</b></div>
+								<div class="clearfix"></div>
+							</div>
+							<div class = "row">
+								<div class="col-sm-offset-1" style= "float: left">
+									<button type="button" class="btn btn-warning" id="addToMenu">Add to menu</button>
+								</div>
+								<div class="col-sm-offset-3"style="float: left">
+									<b>Dish price: <span id="dishPrice"></span> SEK</b>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--END DISH INSTRUCTIONS AND INGREDIENTS -->
+
+				<!--DINNER OVERVIEW -->
+				<div class="row">
+					<div class="col-sm-12 border">
+						<h3>My dinner: <span id="numberOfGuests"></span> people </h3>
+						<button type="button" class="btn btn-warning col-sm-3 col-sm-offset-5 col-xs-5">Go back and edit menu</button>
+					</div>
+					<div class="row" id="menuOverview">
+					</div>
+					<button type="button" class="btn btn-warning" id="PrintRecipe">Print full recipe</button>
+				</div>
+				<!--END DINNER OVERVIEW -->
+
+				<!--DINNER PRINTOUT -->
+				<div class="dinnerPrintout" >
+					<div class="modal-body row">
+						<div class="col-md-6">
+							<h2 style="margin-top:0">My Dinner: <span id="Guests"></span> people</h2>
+						</div>
+						<div class="col-md-6">
+							<button type="button" class="btn btn-warning" id="GoBackButton" style= "float:right">Go back to edit dinner</button>
+						</div>
+					</div>
+					<hr>
+					<div id="printoutContainer"></div>
+				</div>
+				<!--END DINNER PRINTOUT -->
+			</div>
+		</div>
 	</div>
-	<!--END WELCOME AND ENTER-->
+
+	
 
 	<!-- jQuery and Bootstrap-->
 	<script src="https://code.jquery.com/jquery.js"></script>
@@ -34,7 +162,9 @@
 	<script src="js/model/dinnerModel.js"></script>
 
 	<script src="js/view/sidebarView.js"></script>
-	<script src="js/view/dishDetailsView.js"></script>
+	<script src="js/view/dishIngredientsView.js"></script>
 	<script src="js/view/dishIconsView.js"></script>
+	<script src="js/view/dishInstructionsView.js"></script>
+	<script src="js/view/menuOverviewView.js"></script>
 </body>
 </html>

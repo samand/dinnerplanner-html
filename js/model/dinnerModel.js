@@ -3,52 +3,52 @@ var DinnerModel = function() {
 	//TODO Lab 1 implement the data structure that will hold number of guest
 	// and selected dishes for the dinner menu
 
-	this.numberOfGuests = 4;
-	this.menuArray=[1,2,3];
+	var numberOfGuests = 4;
+	var menuArray=[1,2,3];
 
 	this.incrementNumberOfGuests = function () {
-		this.numberOfGuests++;
-		console.log("Incremented number of guests to",this.numberOfGuests);
+		numberOfGuests++;
+		//console.log("Incremented number of guests to",numberOfGuests);
 	}
 	this.decrementNumberOfGuests = function (){
-		this.numberOfGuests--;
-		console.log("Decremented number of guests to",this.numberOfGuests);
+		numberOfGuests--;
+		//console.log("Decremented number of guests to",numberOfGuests);
 	}
 
 	this.setNumberOfGuests = function(num) {
-		this.numberOfGuests=num;
-		console.log("Changed number of guests to", this.numberOfGuests);
+		numberOfGuests=num;
+		//console.log("Changed number of guests to", numberOfGuests);
 	}
 
 	this.getNumberOfGuests = function() {
-		return this.numberOfGuests;
+		return numberOfGuests;
 	}
 
 	//Returns the dish that is on the menu for selected type
 	this.getSelectedDish = function(type) {
-		for (key in this.menuArray){
-			var dish = this.getDish(this.menuArray[key]);
+		for (key in menuArray){
+			var dish = this.getDish(menuArray[key]);
 			if (dish.type == type){
-				console.log(dish);
+				//console.log(dish);
 				return dish;
 			}
 		}
-		console.log("OBS! Couldn't find the requested dish");
+		//console.log("OBS! Couldn't find the requested dish");
 	}
 
 	//Returns the menuArray, just containing the id of each dish on the menu.
 	this.getMenu = function(){
-		return this.menuArray;
+		return menuArray;
 	}
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
 		var dishesOnMenu=[];
-		for (key in this.menuArray){
-			var dish = this.getDish(this.menuArray[key]);
+		for (key in menuArray){
+			var dish = this.getDish(menuArray[key]);
 			dishesOnMenu.push(dish);
 		}
-		console.log("Returning dishes on the menu:",dishesOnMenu);
+		//console.log("Returning dishes on the menu:",dishesOnMenu);
 		return dishesOnMenu;
 	}
 
@@ -60,13 +60,13 @@ var DinnerModel = function() {
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
 		var ingredientsArray = [];
-		for (key in this.menuArray){
-			var dishIngredients = this.getIngredientsOfDish(this.menuArray[key]);
+		for (key in menuArray){
+			var dishIngredients = this.getIngredientsOfDish(menuArray[key]);
 			for (ingredient in dishIngredients){
 				ingredientsArray.push(dishIngredients[ingredient]);
 			}
 		}
-		console.log("Returning all ingredients on the menu.")
+		//console.log("Returning all ingredients on the menu.")
 		return ingredientsArray;
 	}
 
@@ -92,22 +92,22 @@ var DinnerModel = function() {
 			var price = ingredientsArray[key].price;
 			totalSum = totalSum + quantity*price;
 		}
-		totalSum = totalSum*this.numberOfGuests;
-		console.log("Returning the total price of the menu:",totalSum);
+		totalSum = totalSum*numberOfGuests;
+		//console.log("Returning the total price of the menu:",totalSum);
 		return totalSum;
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		this.menuArray.push(id);
-		console.log("Added item with id",id, "to menuArray.");
+		menuArray.push(id);
+		//console.log("Added item with id",id, "to menuArray.");
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		this.menuArray.splice(this.menuArray.indexOf(id),1);
-		console.log("Removed item with id",id,"from menuArray");
+		menuArray.splice(menuArray.indexOf(id),1);
+		//console.log("Removed item with id",id,"from menuArray");
 	}
 
 
