@@ -3,6 +3,7 @@ $(function() {
 	var dinnerModel = new DinnerModel();
 
 	//Instantiating views
+	var welcome	= new WelcomeView($("#welcome"),dinnerModel);
 
 	var sidebar = new SidebarView($("#sidebar"),dinnerModel);
 	var menuOverview = new MenuOverviewView($("#menuOverview"),dinnerModel);
