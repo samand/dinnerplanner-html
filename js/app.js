@@ -17,7 +17,6 @@ $(function() {
 	 * use the $('someSelector') to search for elements in the whole HTML.
 	 * In other places you should limit the search only to the children 
 	 * of the specific view you're working with (see exampleView.js).
-	 */
 
 });
 
@@ -28,12 +27,29 @@ Implement the controller for each view that has some interaction.
 Implementing event listeners etc.
 */
 
+	this.showDishSearchScreen = function(){
+		welcome.hide();
+		searchResults.show();
+		sidebar.show();
+	};
+
+	new WelcomeViewController(model, welcome, this);
+
+
+
+var btn= document.getElementById("WelcomeButton");
+var listener= function(evt){
+    alert(evt.type+' event on "'+evt.target.innerHTML+'"');
+}
+btn.addEventListener("click", listener , false);
+
 var showIndex = function(){
 	//TODO
 	/*
 	Show welcome text and Create New Dinner Button. 
 	Need to change that into a view.
 	*/
+
 }
 
 var showSelectDish = function(){
