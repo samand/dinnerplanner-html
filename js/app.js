@@ -2,8 +2,6 @@ $(function() {
 	this.showDishSearchScreen = function(){
 		console.log("In showDishSearchScreen");
 		welcomeView.hide();
-		searchResults.show();
-		//sidebar.show();
 	};
 	//Instantiating models
 	var dinnerModel = new DinnerModel();

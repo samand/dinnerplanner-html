@@ -27,8 +27,28 @@
 
 		<div class="row">
 			<!--SIDEBAR-->
-			<button class="btn btn-warning" data-toggle="collapse" data-target="#sidebar" style= "float:right">MENU</button>
-			<div class="col-sm-3 col-xs-12 border collapse" id="sidebar">
+			<div id="sidebar">
+				<!--<button class="btn btn-warning" data-toggle="collapse" data-target="#sidebar" style= "float:right">MENU</button>-->
+				<div class="col-sm-3 col-xs-12 border">
+					<h3>My Dinner</h3>
+					<div class="row">Number of guests: 
+						<span id="numberOfGuests"></span>
+						<button id="addGuest" class="btn">
+							<span class="glyphicon glyphicon-plus"></span>
+							<span class="glyphicon glyphicon-minus"></span>
+						</button>
+					</div>
+					<div class="row border">
+						<h4 class="col-xs-6 alignLeft noMargin">Dish name</h4>
+						<h4 class="col-xs-6 alignRight nomargin">Price</h4>
+					</div>
+					<div id="menuItems" class="row border"></div>
+					<div class="row">
+						<div class="col-xs-6">Price of menu: </div>
+						<div id="priceOfMenu" class="col-xs-6"></div>
+					</div>
+					<button id="confirmDinner" class="btn btn-warning btn-block">Confirm Dinner</button>
+				</div>
 			</div>
 			<!--END SIDEBAR-->
 
