@@ -32,4 +32,14 @@ var SearchResultsView = function(container, model){
 		div.appendChild(dishName);
 		dishDescription.append(div);
 	}
+
+	this.hide = function(){
+		container[0].style.display = "none";
+	}
+
+	this.show = function(){
+		container[0].style.display = "inline";
+	}
+
+	
 }

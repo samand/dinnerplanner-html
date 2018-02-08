@@ -28,7 +28,6 @@ var MenuOverviewView = function(container, model){
 		//Get dish and insert relevant things into the placeholders
 		var dishItem = model.getDish(menu[key]);
 		img.src = "images/".concat(dishItem.image);
-		console.log(img.src);
 		dishName.innerHTML = dishItem.name;
 		var priceString = model.getDishPrice(menu[key]).toString().concat(" SEK");
 		dishPrice.innerHTML = priceString;

@@ -16,8 +16,13 @@
 	</div>
 	
 	<div class="container-fluid">
-		<!--WELCOME AND ENTER--> <!-- Welcome has no view --> 
-		<div class="row" id="welcome"></div>
+		<!--WELCOME AND ENTER--> 
+		<div class="row" id="welcome">
+			<div class="col-sm-offset-3 col-sm-6">
+				<p id="welcomeText">[Welcome text. Fetched by view.]</p>
+				<button class="btn btn-warning" id="welcomeButton" type="button">Create New Dinner</button>
+			</div>
+		</div>
 		<!--END WELCOME AND ENTER-->
 
 		<div class="row">
@@ -29,16 +34,13 @@
 
 			<div class="col-sm-9 col-xs-12" id="second-page-body">
 				<!--DISH SEARCH --> <!-- Dish search has no view -->
-				<div class="row" id="dishSearch">
-					>>Dish Search<<
-					<div>
-						<h3>Find a dish</h3>
-					</div>
-					<div class="input-group dropdown" style= "float: left; margin-right: 5%">
-						<input class="form-control" placeholder="Enter key words" name="srch-term" id="srch-term" type="text">
+				<div class="row" id="dishSearch" style="display:none">
+					<h3>Find a dish</h3>
+					<div class="input-group" style= "float: left; margin-right: 5%">
+						<input class="form-control" id="searchText" type="text" placeholder="Enter key words">
 					</div>
 					<div class="dropdown" style= "float: left; margin-right: 5%">
-						<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">All
+						<button class="btn btn-primary dropdown-toggle" id="searchCategory" type="button" data-toggle="dropdown">All
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu">
@@ -48,7 +50,7 @@
 							<li><a href="#">Appetizer</a></li>
 						</ul>
 					</div>
-					<button type="button" class="btn btn-warning" id="SearchButton">Search</button>
+					<button class="btn btn-warning" id="searchButton" type="button">Search</button>
 				</div>
 				<!--END DISH SEARCH -->
 ++++++++++++++++++++++++++++++++++++++
@@ -134,6 +136,7 @@
 	<script src="js/app.js"></script>
 	<script src="js/model/dinnerModel.js"></script>
 	<script src="js/view/welcomeView.js"></script>
+	<script src="js/controller/welcomeViewController.js"></script>
 	<script src="js/view/sidebarView.js"></script>
 	<script src="js/view/dishSearchView.js"></script>
 	<script src="js/view/dishInstructionsView.js"></script>

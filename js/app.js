@@ -1,10 +1,15 @@
 $(function() {
+	this.showDishSearchScreen = function(){
+		console.log("In showDishSearchScreen");
+		welcomeView.hide();
+		searchResults.show();
+		//sidebar.show();
+	};
 	//Instantiating models
 	var dinnerModel = new DinnerModel();
 
 	//Instantiating views
-	var welcome	= new WelcomeView($("#welcome"),dinnerModel);
-
+	var welcomeView	= new WelcomeView($("#welcome"),dinnerModel);
 	var sidebar = new SidebarView($("#sidebar"),dinnerModel);
 	var menuOverview = new MenuOverviewView($("#menuOverview"),dinnerModel);
 	var dishInstructions =new DishInstructionsView($("#dishInstructions"),dinnerModel);
@@ -12,12 +17,16 @@ $(function() {
 	var searchResults = new SearchResultsView($("#searchResults"),dinnerModel);
 	var menuPrintout = new MenuPrintoutView($("#menuPrintout"),dinnerModel);
 	
+	//Instantiating controllers
+	new WelcomeViewController(dinnerModel,welcomeView,this);
+
+
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
 	 * use the $('someSelector') to search for elements in the whole HTML.
 	 * In other places you should limit the search only to the children 
 	 * of the specific view you're working with (see exampleView.js).
-
+	**/	
 });
 
 
@@ -27,15 +36,9 @@ Implement the controller for each view that has some interaction.
 Implementing event listeners etc.
 */
 
-	this.showDishSearchScreen = function(){
-		welcome.hide();
-		searchResults.show();
-		sidebar.show();
-	};
+	//new WelcomeViewController(model, welcome, this);
 
-	new WelcomeViewController(model, welcome, this);
-
-
+/*
 
 var btn= document.getElementById("WelcomeButton");
 var listener= function(evt){
@@ -50,7 +53,7 @@ var showIndex = function(){
 	Need to change that into a view.
 	*/
 
-}
+//}
 
 var showSelectDish = function(){
 	//TODO

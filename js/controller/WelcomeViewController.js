@@ -1,9 +1,6 @@
 var WelcomeViewController = function(model, view, app) {
-
-    var btn= document.getElementById("welcomeButton");
-
-    btn.addEventListener("click", listener , false);
+	console.log("in WelcomeViewController");
+    var welcomeBtn= document.getElementById("welcomeButton");
     //setup button click listener
-    app.showDishSearchScreen();
-}
+    welcomeBtn.addEventListener("click", app.showDishSearchScreen, false);
 }
