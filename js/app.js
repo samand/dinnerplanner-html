@@ -11,12 +11,11 @@ $(function() {
 	var sidebarView = new SidebarView($("#sidebar"),dinnerModel);
 	var selectDishView = new SelectDishView($("#selectDish"),dinnerModel);
 	var dishDetailsView =new DishDetailsView($("#dishDetails"),dinnerModel);
-
-	var menuOverview = new MenuOverviewView($("#menuOverview"),dinnerModel);
+	var dinnerOverviewView = new DinnerOverviewView($("#dinnerOverview"),dinnerModel);
 	
 	//var dishIngredients = new DishIngredientsView($("#dishIngredients"),dinnerModel);
 	
-	var menuPrintout = new MenuPrintoutView($("#menuPrintout"),dinnerModel);
+	var dinnerPrintoutView = new DinnerPrintoutView($("#dinnerPrintout"),dinnerModel);
 	
 	//Instantiating controllers
 	new WelcomeViewController(dinnerModel,welcomeView,this);

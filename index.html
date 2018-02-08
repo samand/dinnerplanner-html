@@ -25,6 +25,7 @@
 		</div>
 		<!--END WELCOME AND ENTER-->
 
+		<!--ROW WITH SIDEBAR -->
 		<div class="row">
 			<!--SIDEBAR-->
 			<div id="sidebar">
@@ -98,16 +99,16 @@
 				<div class="col-sm-5 border" style="background: antiquewhite">
 					<div>
 						<h3>Ingredients for <span id="numberOfGuests"></span> persons</h3>
-						<div id="ingredientsDisplay"> <!--Why no row here? And are the divs below necessary, or is <b> enough? -->
-							<div class="col-xs-2 noMargin"><b>Quantity</b></div>
-							<div class="col-xs-2 noMargin"><b>Unit</b></div>
-							<div class="col-xs-4 noMargin"><b>Ingredient</b></div>
-							<div class="col-xs-4 noMargin"><b>Price</b></div>
+						<div id="ingredientsDisplay"> <!--Why no row here?-->
+							<b class="col-xs-2 noMargin">Quantity</b>
+							<b class="col-xs-2 noMargin">Unit</b>
+							<b class="col-xs-4 noMargin">Ingredient</b>
+							<b class="col-xs-4 noMargin">Price</b>
 							<div class="clearfix"></div>
 						</div>
-						<div class = "row"> <!--When there is a row here? -->
+						<div class = "row"> <!--Why is there a row here? -->
 							<div class="col-sm-offset-1" style= "float: left">
-								<button type="button" class="btn btn-warning" id="addToMenu">Add to menu</button>
+								<button id="addToMenu" class="btn btn-warning" type="button">Add to menu</button>
 							</div>
 							<div class="col-sm-offset-3" style="float: left">
 								<b>Dish price: <span id="dishPrice"></span> SEK</b>
@@ -118,35 +119,31 @@
 				<!--END DISH INGREDIENTS -->
 			</div>
 			<!--END DISH DETAILS -->
-			
-				<!--MENU OVERVIEW -->
-				<div class="row" id="menuOverview">
-					>>Menu Overview<<
-					<div class="col-xs-12 border">
-						<h3>My dinner: <span id="numberOfGuests"></span> people </h3>
-						<button type="button" class="btn btn-warning" style= "float:right">Go back and edit menu</button>
-					</div>
-					<div class="row" id="menuDisplay">
-					</div>
-					<button type="button" class="btn btn-warning" id="PrintRecipe">Print full recipe</button>
-				</div>
-				<!--END MENU OVERVIEW -->
-++++++++++++++++++++++++++++++++++++++
-				<!--MENU PRINTOUT -->
-				<div class="row" id="menuPrintout">
-					>>Menu Printout<<
-					<div class="col-xs-12 border">
-						<h3>My dinner: <span id="numberOfGuests"></span> people </h3>
-						<button type="button" class="btn btn-warning" style= "float:right">Go back and edit menu</button>
-					</div>
-					<div id="printoutDisplay"></div>
-				</div>
-				<!--END MENU PRINTOUT -->
-			</div>
 		</div>
+		<!--END ROW WITH SIDEBAR -->
+
+		<!--DINNER OVERVIEW -->
+		<div id="dinnerOverview">
+			<div class="row">
+				<h3>My dinner: <span id="numberOfGuests"></span> people </h3>
+				<button class="btn btn-warning" type="button" style= "float:right">Go back and edit dinner</button>
+			</div>
+			<div id="dinnerDisplayRow" class="row"></div>
+			<button id="PrintRecipe" class="btn btn-warning" type="button">Print full recipe</button>
+		</div>
+		<!--END DINNER OVERVIEW -->
+
+		<!--DINNER PRINTOUT -->
+		<div id="dinnerPrintout">
+			<div class="row">
+				<h3>My dinner: <span id="numberOfGuests"></span> people </h3>
+				<button class="btn btn-warning" type="button" style= "float:right">Go back and edit dinner</button>
+			</div>
+			<div id="printoutDisplay"></div>
+		</div>
+		<!--END DINNER PRINTOUT -->
 	</div>
 
-	
 
 	<!-- jQuery and Bootstrap-->
 	<script src="https://code.jquery.com/jquery.js"></script>
@@ -159,9 +156,8 @@
 	<script src="js/controller/welcomeViewController.js"></script>
 	<script src="js/view/sidebarView.js"></script>
 	<script src="js/view/selectDishView.js"></script>
-
 	<script src="js/view/dishDetailsView.js"></script>
-	<script src="js/view/menuOverviewView.js"></script>
-	<script src="js/view/menuPrintoutView.js"></script>
+	<script src="js/view/dinnerOverviewView.js"></script>
+	<script src="js/view/dinnerPrintoutView.js"></script>
 </body>
 </html>

@@ -1,28 +1,17 @@
-var MenuPrintoutView = function(container, model){
+var DinnerPrintoutView = function(container, model){
+	//Container - #dinnerPrintout
 
-	//Lab 2
-	this.update = function(){
-		//TODO
-		/*
-		Repopulate the view from the model.
-		*/
-	}
-
-	model.addObserver(this);
-
-	/////////////
-
-	var menu = model.getMenu();
-
+	//Header Row
 	var numberOfGuests = container.find("#numberOfGuests");
-	numberOfGuests.html(model.getNumberOfGuests());
-
+	numberOfGuests.html(model.getNumberOfGuests());	
+	
+	//Dinner Display Row
+	var menu = model.getMenu();
 	menuPrintout = container.find("#printoutDisplay");
-
 	for(key in menu){
 		//Create elements and set formatting
 		var row = document.createElement("div");
-		row.className = "row borderu";
+		row.className = "row border";
 		var img = document.createElement("img");
 		img.className = "col-xs-3 col-sm-2";
 		var name = document.createElement("h4");
@@ -42,4 +31,17 @@ var MenuPrintoutView = function(container, model){
 
 		menuPrintout.append(row);
 	}
+
+	//Lab 2
+	this.update = function(){
+		//TODO
+		/*
+		Repopulate the view from the model.
+		*/
+	}
+
+	model.addObserver(this);
+
+	/////////////
+
 }
