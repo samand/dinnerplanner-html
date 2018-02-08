@@ -75,7 +75,6 @@
 						<button id="searchButton" class="btn btn-warning" type="button">Search</button>
 					</div>
 					<!--END SEARCH BAR -->
-
 					<!--SEARCH RESULTS -->
 					<div id="searchResultsRow" class="row"></div>
 					<!--END SEARCH RESULTS -->
@@ -83,44 +82,43 @@
 			</div>
 			<!--END SELECT DISH -->
 
-			<!--DISH INSTRUCTIONS AND INGREDIENTS -->
-				<div class="row" id="dishInstructions">
-					>>Dish Instructions<<
-					<div class="col-sm-4">
-						<div>
-							<h2>
-								<div  id="dishTitle"></div>
-							</h2>
-							<div    id="dishImage"></div>
-							<div    id="dishDescription"></div>
-							<button type="button" class="btn btn-warning" id="ToSearch">Back to search</button>
-						</div>
+			<!--DISH DETAILS -->
+			<div id="dishDetails">
+				<!--DISH INSTRUCTIONS -->
+				<div class="col-sm-4 col-xs-12">
+					<div>
+						<h2 id="dishTitle"></h2>
+						<img id="dishImage">
+						<p id="dishDescription"></p>
+						<button id="ToSearch" class="btn btn-warning" type="button">Back to search</button>
 					</div>
-					<div class="col-sm-5 border" style="background: antiquewhite">
-						<div>
-							<h3>
-								<div>Ingredients for <span id="numberOfGuests"></span> persons</div>
-							</h3>
-							<div id="ingredientsDisplay">
-								<div class="col-xs-2 noMargin"><b>Quantity</b></div>
-								<div class="col-xs-2 noMargin"><b>Unit</b></div>
-								<div class="col-xs-4 noMargin"><b>Ingredient</b></div>
-								<div class="col-xs-4 noMargin"><b>Price</b></div>
-								<div class="clearfix"></div>
+				</div>
+				<!--END DISH INSTRUCTIONS -->
+				<!--DISH INGREDIENTS -->
+				<div class="col-sm-5 border" style="background: antiquewhite">
+					<div>
+						<h3>Ingredients for <span id="numberOfGuests"></span> persons</h3>
+						<div id="ingredientsDisplay"> <!--Why no row here? And are the divs below necessary, or is <b> enough? -->
+							<div class="col-xs-2 noMargin"><b>Quantity</b></div>
+							<div class="col-xs-2 noMargin"><b>Unit</b></div>
+							<div class="col-xs-4 noMargin"><b>Ingredient</b></div>
+							<div class="col-xs-4 noMargin"><b>Price</b></div>
+							<div class="clearfix"></div>
+						</div>
+						<div class = "row"> <!--When there is a row here? -->
+							<div class="col-sm-offset-1" style= "float: left">
+								<button type="button" class="btn btn-warning" id="addToMenu">Add to menu</button>
 							</div>
-							<div class = "row">
-								<div class="col-sm-offset-1" style= "float: left">
-									<button type="button" class="btn btn-warning" id="addToMenu">Add to menu</button>
-								</div>
-								<div class="col-sm-offset-3"style="float: left">
-									<b>Dish price: <span id="dishPrice"></span> SEK</b>
-								</div>
+							<div class="col-sm-offset-3" style="float: left">
+								<b>Dish price: <span id="dishPrice"></span> SEK</b>
 							</div>
 						</div>
 					</div>
 				</div>
-				<!--END DISH INSTRUCTIONS AND INGREDIENTS -->
-++++++++++++++++++++++++++++++++++++++
+				<!--END DISH INGREDIENTS -->
+			</div>
+			<!--END DISH DETAILS -->
+			
 				<!--MENU OVERVIEW -->
 				<div class="row" id="menuOverview">
 					>>Menu Overview<<
@@ -161,7 +159,8 @@
 	<script src="js/controller/welcomeViewController.js"></script>
 	<script src="js/view/sidebarView.js"></script>
 	<script src="js/view/selectDishView.js"></script>
-	<script src="js/view/dishInstructionsView.js"></script>
+
+	<script src="js/view/dishDetailsView.js"></script>
 	<script src="js/view/menuOverviewView.js"></script>
 	<script src="js/view/menuPrintoutView.js"></script>
 </body>

@@ -1,28 +1,20 @@
-var DishInstructionsView =function(container, model){
+var DishDetailsView =function(container, model){
+	//Container - #dishDetails
 
-	//Lab 2
-	this.update = function(){
-		//TODO
-		/*
-		Repopulate the view from the model.
-		*/
-	}
-	
-	model.addObserver(this);
-
-	/////////////
+	//Dish Description
 
 	//Get dish from model
 	var dishID=1;
 	var dish = model.getDish(dishID);
+
 	//set dish title
 	var dishTitle = container.find("#dishTitle");
 	dishTitle.html(dish.name);
+
 	//Image
 	var dishImage = container.find("#dishImage");
-	var img = document.createElement("img");
-	img.src = "images/".concat(dish.image);
-	dishImage.append(img);
+	dishImage.src = "images/".concat(dish.image);
+
 	//Dish description
 	var dishDescription = container.find("#dishDescription");
 	dishDescription.html(dish.description);
@@ -30,7 +22,7 @@ var DishInstructionsView =function(container, model){
 	var numberOfGuests = container.find("#numberOfGuests");
 	numberOfGuests.html(model.getNumberOfGuests());
 	
-	//Displaying ingredients
+	//Dish Ingredients
 	var ingredientsDisplay = container.find("#ingredientsDisplay");
 
 	for(key in dish.ingredients){
@@ -61,4 +53,17 @@ var DishInstructionsView =function(container, model){
 	//Displaying price of dish
 	var dishPrice = container.find("#dishPrice");
 	dishPrice.html(model.getDishPrice(dishID));
+
+		//Lab 2
+	this.update = function(){
+		//TODO
+		/*
+		Repopulate the view from the model.
+		*/
+	}
+	
+	model.addObserver(this);
+
+	/////////////
+
 }
