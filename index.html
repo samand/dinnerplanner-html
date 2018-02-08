@@ -52,36 +52,38 @@
 			</div>
 			<!--END SIDEBAR-->
 
-			<div class="col-sm-9 col-xs-12" id="second-page-body">
-				<!--DISH SEARCH --> <!-- Dish search has no view -->
-				<div class="row" id="dishSearch" style="display:none">
-					<h3>Find a dish</h3>
-					<div class="input-group" style= "float: left; margin-right: 5%">
-						<input class="form-control" id="searchText" type="text" placeholder="Enter key words">
+			<!--SELECT DISH -->
+			<div id="selectDish">
+				<div class="col-sm-9 col-xs-12">
+					<!--SEARCH BAR -->
+					<div id="searchBarRow" class="row">
+						<h3>Find a dish</h3>
+						<div class="input-group" style= "float: left; margin-right: 5%">
+							<input id="searchText" class="form-control" type="text" placeholder="Enter key words">
+						</div>
+						<div class="dropdown" style= "float: left; margin-right: 5%">
+							<button id="searchCategory" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dish Categories
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu"> <!--Should be done dynamically-->
+								<li><a href="#">Main Course</a></li>
+								<li><a href="#">Side Dish</a></li>
+								<li><a href="#">Dessert</a></li>
+								<li><a href="#">Appetizer</a></li>
+							</ul>
+						</div>
+						<button id="searchButton" class="btn btn-warning" type="button">Search</button>
 					</div>
-					<div class="dropdown" style= "float: left; margin-right: 5%">
-						<button class="btn btn-primary dropdown-toggle" id="searchCategory" type="button" data-toggle="dropdown">All
-							<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu">
-							<li><a href="#">Main Course</a></li>
-							<li><a href="#">Side Dish</a></li>
-							<li><a href="#">Dessert</a></li>
-							<li><a href="#">Appetizer</a></li>
-						</ul>
-					</div>
-					<button class="btn btn-warning" id="searchButton" type="button">Search</button>
+					<!--END SEARCH BAR -->
+
+					<!--SEARCH RESULTS -->
+					<div id="searchResultsRow" class="row"></div>
+					<!--END SEARCH RESULTS -->
 				</div>
-				<!--END DISH SEARCH -->
-++++++++++++++++++++++++++++++++++++++
-				<!--SEARCH RESULTS -->
-				<div class="row" id="searchResults">
-					>>Search Results<<
-					<div id="dishIcons"></div>
-				</div>
-				<!--END SEARCH RESULTS -->
-++++++++++++++++++++++++++++++++++++++
-				<!--DISH INSTRUCTIONS AND INGREDIENTS -->
+			</div>
+			<!--END SELECT DISH -->
+
+			<!--DISH INSTRUCTIONS AND INGREDIENTS -->
 				<div class="row" id="dishInstructions">
 					>>Dish Instructions<<
 					<div class="col-sm-4">
@@ -158,7 +160,7 @@
 	<script src="js/view/welcomeView.js"></script>
 	<script src="js/controller/welcomeViewController.js"></script>
 	<script src="js/view/sidebarView.js"></script>
-	<script src="js/view/dishSearchView.js"></script>
+	<script src="js/view/selectDishView.js"></script>
 	<script src="js/view/dishInstructionsView.js"></script>
 	<script src="js/view/menuOverviewView.js"></script>
 	<script src="js/view/menuPrintoutView.js"></script>

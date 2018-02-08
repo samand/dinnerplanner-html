@@ -1,5 +1,4 @@
 var SidebarView = function(container, model){
-	console.log("In SidebarView")
 	//Container - #sidebar
 	var numberOfGuests = container.find("#numberOfGuests");
 	numberOfGuests.html(model.getNumberOfGuests());

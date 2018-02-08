@@ -8,11 +8,13 @@ $(function() {
 
 	//Instantiating views
 	var welcomeView	= new WelcomeView($("#welcome"),dinnerModel);
-	var sidebar = new SidebarView($("#sidebar"),dinnerModel);
+	var sidebarView = new SidebarView($("#sidebar"),dinnerModel);
+	var selectDishView = new SelectDishView($("#selectDish"),dinnerModel);
+
 	var menuOverview = new MenuOverviewView($("#menuOverview"),dinnerModel);
 	var dishInstructions =new DishInstructionsView($("#dishInstructions"),dinnerModel);
 	//var dishIngredients = new DishIngredientsView($("#dishIngredients"),dinnerModel);
-	var searchResults = new SearchResultsView($("#searchResults"),dinnerModel);
+	
 	var menuPrintout = new MenuPrintoutView($("#menuPrintout"),dinnerModel);
 	
 	//Instantiating controllers
