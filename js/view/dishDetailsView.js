@@ -54,7 +54,21 @@ var DishDetailsView =function(container, model){
 	var dishPrice = container.find("#dishPrice");
 	dishPrice.html(model.getDishPrice(dishID));
 
-		//Lab 2
+	
+	this.hide = function(){
+		container[0].style.display = "none";
+	}
+
+	this.show = function(){
+		container[0].style.display = "inline";
+	}
+
+
+
+
+
+
+	//Lab 2
 	this.update = function(){
 		//TODO
 		/*

@@ -9,5 +9,4 @@ var WelcomeView = function(container, model){
 	this.show = function(){
 		container[0].style.display = "inline";
 	}
-
 }

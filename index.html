@@ -28,9 +28,9 @@
 		<!--ROW WITH SIDEBAR -->
 		<div class="row">
 			<!--SIDEBAR-->
-			<div id="sidebar">
+			<div id="sidebar" class="col-sm-3 col-xs-12 border">
 				<!--<button class="btn btn-warning" data-toggle="collapse" data-target="#sidebar" style= "float:right">MENU</button>-->
-				<div class="col-sm-3 col-xs-12 border">
+				<div>
 					<h3>My Dinner</h3>
 					<div class="row">Number of guests: 
 						<span id="numberOfGuests"></span>
@@ -54,8 +54,8 @@
 			<!--END SIDEBAR-->
 
 			<!--SELECT DISH -->
-			<div id="selectDish">
-				<div class="col-sm-9 col-xs-12">
+			<div id="selectDish" class="col-sm-9 col-xs-12" style="display:none">
+				<div>
 					<!--SEARCH BAR -->
 					<div id="searchBarRow" class="row">
 						<h3>Find a dish</h3>
@@ -84,39 +84,41 @@
 			<!--END SELECT DISH -->
 
 			<!--DISH DETAILS -->
-			<div id="dishDetails">
-				<!--DISH INSTRUCTIONS -->
-				<div class="col-sm-4 col-xs-12">
-					<div>
-						<h2 id="dishTitle"></h2>
-						<img id="dishImage">
-						<p id="dishDescription"></p>
-						<button id="ToSearch" class="btn btn-warning" type="button">Back to search</button>
-					</div>
-				</div>
-				<!--END DISH INSTRUCTIONS -->
-				<!--DISH INGREDIENTS -->
-				<div class="col-sm-5 border" style="background: antiquewhite">
-					<div>
-						<h3>Ingredients for <span id="numberOfGuests"></span> persons</h3>
-						<div id="ingredientsDisplay"> <!--Why no row here?-->
-							<b class="col-xs-2 noMargin">Quantity</b>
-							<b class="col-xs-2 noMargin">Unit</b>
-							<b class="col-xs-4 noMargin">Ingredient</b>
-							<b class="col-xs-4 noMargin">Price</b>
-							<div class="clearfix"></div>
-						</div>
-						<div class = "row"> <!--Why is there a row here? -->
-							<div class="col-sm-offset-1" style= "float: left">
-								<button id="addToMenu" class="btn btn-warning" type="button">Add to menu</button>
-							</div>
-							<div class="col-sm-offset-3" style="float: left">
-								<b>Dish price: <span id="dishPrice"></span> SEK</b>
-							</div>
+			<div id="dishDetails" class="col-sm-9 col-xs-12">
+				<div class="row">
+					<!--DISH INSTRUCTIONS -->
+					<div class="col-sm-4 col-xs-12">
+						<div>
+							<h2 id="dishTitle"></h2>
+							<img id="dishImage">
+							<p id="dishDescription"></p>
+							<button id="ToSearch" class="btn btn-warning" type="button">Back to search</button>
 						</div>
 					</div>
+					<!--END DISH INSTRUCTIONS -->
+					<!--DISH INGREDIENTS -->
+					<div class="col-sm-5 border" style="background: antiquewhite">
+						<div>
+							<h3>Ingredients for <span id="numberOfGuests"></span> persons</h3>
+							<div id="ingredientsDisplay"> <!--Why no row here?-->
+								<b class="col-xs-2 noMargin">Quantity</b>
+								<b class="col-xs-2 noMargin">Unit</b>
+								<b class="col-xs-4 noMargin">Ingredient</b>
+								<b class="col-xs-4 noMargin">Price</b>
+								<div class="clearfix"></div>
+							</div>
+							<div class = "row"> <!--Why is there a row here? -->
+								<div class="col-sm-offset-1" style= "float: left">
+									<button id="addToMenu" class="btn btn-warning" type="button">Add to menu</button>
+								</div>
+								<div class="col-sm-offset-3" style="float: left">
+									<b>Dish price: <span id="dishPrice"></span> SEK</b>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--END DISH INGREDIENTS -->
 				</div>
-				<!--END DISH INGREDIENTS -->
 			</div>
 			<!--END DISH DETAILS -->
 		</div>
@@ -153,9 +155,11 @@
 	<script src="js/app.js"></script>
 	<script src="js/model/dinnerModel.js"></script>
 	<script src="js/view/welcomeView.js"></script>
-	<script src="js/controller/welcomeViewController.js"></script>
+	<script src="js/controller/welcomeController.js"></script>
+
 	<script src="js/view/sidebarView.js"></script>
 	<script src="js/view/selectDishView.js"></script>
+	<script src="js/controller/selectDishController.js"></script>
 	<script src="js/view/dishDetailsView.js"></script>
 	<script src="js/view/dinnerOverviewView.js"></script>
 	<script src="js/view/dinnerPrintoutView.js"></script>

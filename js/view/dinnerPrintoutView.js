@@ -31,6 +31,15 @@ var DinnerPrintoutView = function(container, model){
 
 		menuPrintout.append(row);
 	}
+	
+	this.hide = function(){
+		container[0].style.display = "none";
+	}
+
+	this.show = function(){
+		container[0].style.display = "inline";
+	}
+
 
 	//Lab 2
 	this.update = function(){

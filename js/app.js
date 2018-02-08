@@ -1,8 +1,46 @@
 $(function() {
+	this.showWelcomeScreen = function(){
+		welcomeView.show();
+		sidebarView.hide();
+		selectDishView.hide();
+		dishDetailsView.hide();
+		dinnerOverviewView.hide();
+		dinnerPrintoutView.hide();
+	}
 	this.showDishSearchScreen = function(){
-		console.log("In showDishSearchScreen");
 		welcomeView.hide();
+		sidebarView.show();
+		selectDishView.show();
+		dishDetailsView.hide();
+		dinnerOverviewView.hide();
+		dinnerPrintoutView.hide();
 	};
+
+	this.showDishDetailsScreen = function(){
+		welcomeView.hide();
+		sidebarView.show();
+		selectDishView.hide();
+		dishDetailsView.show();
+		dinnerOverviewView.hide();
+		dinnerPrintoutView.hide();
+	}
+	this.showDinnerOverviewScreen = function(){
+		welcomeView.hide();
+		sidebarView.hide();
+		selectDishView.hide();
+		dishDetailsView.hide();
+		dinnerOverviewView.show();
+		dinnerPrintoutView.hide();
+	}
+	this.showDinnerPrintoutScreen = function(){
+		welcomeView.hide();
+		sidebarView.hide();
+		selectDishView.hide();
+		dishDetailsView.hide();
+		dinnerOverviewView.hide();
+		dinnerPrintoutView.show();
+	}
+
 	//Instantiating models
 	var dinnerModel = new DinnerModel();
 
@@ -12,13 +50,11 @@ $(function() {
 	var selectDishView = new SelectDishView($("#selectDish"),dinnerModel);
 	var dishDetailsView =new DishDetailsView($("#dishDetails"),dinnerModel);
 	var dinnerOverviewView = new DinnerOverviewView($("#dinnerOverview"),dinnerModel);
-	
-	//var dishIngredients = new DishIngredientsView($("#dishIngredients"),dinnerModel);
-	
 	var dinnerPrintoutView = new DinnerPrintoutView($("#dinnerPrintout"),dinnerModel);
 	
 	//Instantiating controllers
-	new WelcomeViewController(dinnerModel,welcomeView,this);
+	new WelcomeController(dinnerModel,welcomeView,this);
+	new SelectDishController(dinnerModel,selectDishView,this);
 
 
 	/**
@@ -27,58 +63,11 @@ $(function() {
 	 * In other places you should limit the search only to the children 
 	 * of the specific view you're working with (see exampleView.js).
 	**/	
+	this.showWelcomeScreen();
 });
-
 
 //TODO
 /*
 Implement the controller for each view that has some interaction.
 Implementing event listeners etc.
 */
-
-	//new WelcomeViewController(model, welcome, this);
-
-/*
-
-var btn= document.getElementById("WelcomeButton");
-var listener= function(evt){
-    alert(evt.type+' event on "'+evt.target.innerHTML+'"');
-}
-btn.addEventListener("click", listener , false);
-
-var showIndex = function(){
-	//TODO
-	/*
-	Show welcome text and Create New Dinner Button. 
-	Need to change that into a view.
-	*/
-
-//}
-
-var showSelectDish = function(){
-	//TODO
-	/*
-	Show Sidebar, Dish Search and Search Results
-	*/
-}
-
-var showDishDetails = function(){
-	//TODO
-	/*
-	Show Sidebar and Dish Instructions
-	*/
-}
-
-var showMenuOverview = function(){
-	//TODO
-	/*
-	Show Menu Overview
-	*/
-}
-
-var showMenuPrintout = function(){
-	//TODO
-	/*
-	Show Menu Printout
-	*/
-}
