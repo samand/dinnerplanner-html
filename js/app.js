@@ -1,5 +1,6 @@
 $(function() {
 	this.showWelcomeScreen = function(){
+		console.log("showWelcomeScreen");
 		welcomeView.show();
 		sidebarView.hide();
 		selectDishView.hide();
@@ -8,6 +9,7 @@ $(function() {
 		dinnerPrintoutView.hide();
 	}
 	this.showDishSearchScreen = function(){
+		console.log("showDishSearchScreen")
 		welcomeView.hide();
 		sidebarView.show();
 		selectDishView.show();
@@ -17,6 +19,7 @@ $(function() {
 	};
 
 	this.showDishDetailsScreen = function(){
+		console.log("showDishDetailsScreen");
 		welcomeView.hide();
 		sidebarView.show();
 		selectDishView.hide();
@@ -25,6 +28,7 @@ $(function() {
 		dinnerPrintoutView.hide();
 	}
 	this.showDinnerOverviewScreen = function(){
+		console.log("showDinnerOverviewScreen");
 		welcomeView.hide();
 		sidebarView.hide();
 		selectDishView.hide();
@@ -33,6 +37,7 @@ $(function() {
 		dinnerPrintoutView.hide();
 	}
 	this.showDinnerPrintoutScreen = function(){
+		console.log("showDinnerPrintoutScreen");
 		welcomeView.hide();
 		sidebarView.hide();
 		selectDishView.hide();
@@ -54,7 +59,11 @@ $(function() {
 	
 	//Instantiating controllers
 	new WelcomeController(dinnerModel,welcomeView,this);
+	new SidebarController(dinnerModel,sidebarView,this);
 	new SelectDishController(dinnerModel,selectDishView,this);
+	new DishDetailsController(dinnerModel,dishDetailsView,this);
+	new DinnerOverviewController(dinnerModel,dinnerOverviewView,this);
+	new DinnerPrintoutController(dinnerModel,dinnerPrintoutView,this);
 
 
 	/**
