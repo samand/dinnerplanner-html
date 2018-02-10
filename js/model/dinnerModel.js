@@ -31,9 +31,10 @@ var DinnerModel = function() {
 		numberOfGuests--;
 		notifyObservers();
 	}
+	/*
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests=num;
-	}
+	}*/
 
 	this.getNumberOfGuests = function() {
 		return numberOfGuests;
