@@ -37,20 +37,9 @@ var DinnerOverviewView = function(container, model){
 		container[0].style.display = "inline";
 	}
 
-
-
-
-
-	//Lab 2
 	this.update = function(model){
 		//TODO
-		/*
-		Repopulate the view from the model.
-		*/
+		//Repopulate the view from the model.
 	}
-	
 	model.addObserver(this.update);
-
-	/////////////
-
 }

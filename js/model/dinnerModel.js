@@ -2,7 +2,8 @@
 var DinnerModel = function() {
 	var numberOfGuests = 4;//Default value
 	var menuArray=[1,2,3];
-	var searchResults=[];
+	var searchResults=[]; //For dishSelectView
+	var currentDish =1; //For dishDetailsView
 	var observers =[]; //An array of update functions. The observers come from the views.
 	//Lab 2
 	this.addObserver = function(observer){
@@ -21,6 +22,14 @@ var DinnerModel = function() {
 		for obs in observers:
 			notify(obs, obj)
 		*/
+	}
+	this.setCurrentDish = function(id){
+		currentDish = id; 
+		//notifyObservers
+	}
+
+	this.getCurrentDishId = function(){
+		return currentDish;
 	}
 
 
@@ -114,13 +123,13 @@ var DinnerModel = function() {
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		menuArray.push(id);
-		//console.log("Added item with id",id, "to menuArray.");
+		//notifyObserver
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		menuArray.splice(menuArray.indexOf(id),1);
-		//console.log("Removed item with id",id,"from menuArray");
+		//notifyObserver
 	}
 
 
@@ -149,8 +158,7 @@ var DinnerModel = function() {
 
 	this.search = function(type,filter){
 		searchResults = this.getAllDishes(type,filter);
-		//console.log("this.search. searchResults: ",searchResults);
-		notifyObservers();
+		notifyObservers(); //Questionable if searchResults should be handled like this in the model.
 	}
 	this.getSearchResults = function(){
 		return searchResults;

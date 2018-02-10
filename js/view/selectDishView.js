@@ -10,26 +10,7 @@ var SelectDishView = function(container, model){
 	var dishesToBeDisplayed = [1,2,3];
 	
 	var searchResultsRow = container.find("#searchResultsRow");
-	/*
-	for(key in dishesToBeDisplayed){
-		//For each dish among the search results
-		//Create elements and set formatting
-		var div = document.createElement("div");
-		div.className = "col-xs-6 col-md-4 border";
-		var img = document.createElement("img");
-		var dishName = document.createElement("h4");
 
-		//Get dish and insert relevant things into the placeholders
-		var dish = model.getDish(dishesToBeDisplayed[key]);
-		img.src = "images/".concat(dish.image);
-		dishName.innerHTML = dish.name;
-
-		//Attach to parents
-		div.appendChild(img);
-		div.appendChild(dishName);
-		searchResultsRow.append(div);
-	}
-	*/
 	var showSearchResults = function(){
 		searchResultsRow.empty();
 		var searchResults = model.getSearchResults();
@@ -46,6 +27,7 @@ var SelectDishView = function(container, model){
 			img.src = "images/".concat(dish.image);
 			dishName.innerHTML = dish.name;
 
+			div.id = dish.id;
 			//Attach to parents
 			div.appendChild(img);
 			div.appendChild(dishName);
@@ -61,13 +43,9 @@ var SelectDishView = function(container, model){
 		container[0].style.display = "inline";
 	}
 
-	//Lab 2
 	this.update = function(model){
 		showSearchResults();
 	}
 	
-	model.addObserver(this.update);
-
-	/////////////
-	
+	model.addObserver(this.update);	
 }
