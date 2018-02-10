@@ -64,17 +64,11 @@
 						<div class="input-group" style= "float: left; margin-right: 5%">
 							<input id="searchText" class="form-control" type="text" placeholder="Enter key words">
 						</div>
-						<div class="dropdown" style= "float: left; margin-right: 5%">
-							<button id="searchCategory" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dish Categories
-								<span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu"> <!--Should be done dynamically-->
-								<li><a href="#">Main Course</a></li>
-								<li><a href="#">Side Dish</a></li>
-								<li><a href="#">Dessert</a></li>
-								<li><a href="#">Appetizer</a></li>
-							</ul>
-						</div>
+						<select id="searchCategory" class="btn btn-primary">
+							<option value="starter">Starter</option>
+							<option value="main dish">Main course</option>
+							<option value="dessert">Dessert</option>
+						</select>
 						<button id="searchButton" class="btn btn-warning" type="button">Search</button>
 					</div>
 					<!--END SEARCH BAR -->

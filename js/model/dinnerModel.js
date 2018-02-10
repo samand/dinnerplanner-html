@@ -2,6 +2,7 @@
 var DinnerModel = function() {
 	var numberOfGuests = 4;//Default value
 	var menuArray=[1,2,3];
+	var searchResults=[];
 	var observers =[]; //An array of update functions. The observers come from the views.
 	//Lab 2
 	this.addObserver = function(observer){
@@ -31,10 +32,6 @@ var DinnerModel = function() {
 		numberOfGuests--;
 		notifyObservers();
 	}
-	/*
-	this.setNumberOfGuests = function(num) {
-		numberOfGuests=num;
-	}*/
 
 	this.getNumberOfGuests = function() {
 		return numberOfGuests;
@@ -148,6 +145,15 @@ var DinnerModel = function() {
 		}
 	  	return dish.type == type && found;
 	  });
+	}
+
+	this.search = function(type,filter){
+		searchResults = this.getAllDishes(type,filter);
+		//console.log("this.search. searchResults: ",searchResults);
+		notifyObservers();
+	}
+	this.getSearchResults = function(){
+		return searchResults;
 	}
 
 	//function that returns a dish of specific ID

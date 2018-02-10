@@ -32,8 +32,6 @@ var SidebarView = function(container, model){
 	var priceOfMenu = container.find("#priceOfMenu");
 	priceOfMenu.html(model.getTotalMenuPrice());
 
-
-
 	this.hide = function(){
 		container[0].style.display = "none";
 	}
