@@ -1,5 +1,4 @@
 var SelectDishController = function(model, view, app){
-	console.log("In DishSearchController");
 	var searchBtn= document.getElementById("searchButton");
 	//Do something with search button
 	var clickSearch = function(){ //Meaningless function, just to show that the right button has been found.

@@ -38,26 +38,15 @@ var SidebarView = function(container, model){
 		container[0].style.display = "inline";
 	}
 
-
-
-	//Lab 2
 	this.update = function(){
-		//TODO
+		//Update number of guests
+		var numberOfGuests = container.find("#numberOfGuests");
+		numberOfGuests.html(model.getNumberOfGuests());
+		//Update price of menu
+		var priceOfMenu = container.find("#priceOfMenu");
+		priceOfMenu.html(model.getTotalMenuPrice());
 		/*
-		Repopulate the view from the model.
 		*/
 	}
-	
-	model.addObserver(this);
-
-	/////////////
-/*
-
-	var menu = model.getMenu();
-
-
-
-	var priceOfMenu = container.find("#priceOfMenu");
-	priceOfMenu.html(model.getTotalMenuPrice());
-	*/
+	model.addObserver(this.update);
 }

@@ -1,15 +1,20 @@
 //DinnerModel Object constructor SAVVAS
 var DinnerModel = function() {
-
-	var observers =[];
+	var numberOfGuests = 4;//Default value
+	var menuArray=[1,2,3];
+	var observers =[]; //An array of update functions. The observers come from the views.
 	//Lab 2
 	this.addObserver = function(observer){
-		//TODO
-		//observers.append(observer) or something like that
+		observers.push(observer);
+	}
+	this.removeObserver = function(observer){
+		//Remove observer from observers-array
 	}
 
-	this.notifyObservers = function(obj){
-		//TODO
+	var notifyObservers = function(){
+		for (key in observers){
+			observers[key]();
+		}
 		/*
 		All functions in the model that modify the model must call this function.
 		for obs in observers:
@@ -18,24 +23,16 @@ var DinnerModel = function() {
 	}
 
 
-	//TODO Lab 1 implement the data structure that will hold number of guest
-	// and selected dishes for the dinner menu
-
-	var numberOfGuests = 4;
-	var menuArray=[1,2,3];
-
 	this.incrementNumberOfGuests = function () {
 		numberOfGuests++;
-		//console.log("Incremented number of guests to",numberOfGuests);
+		notifyObservers();
 	}
 	this.decrementNumberOfGuests = function (){
 		numberOfGuests--;
-		//console.log("Decremented number of guests to",numberOfGuests);
+		notifyObservers();
 	}
-
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests=num;
-		//console.log("Changed number of guests to", numberOfGuests);
 	}
 
 	this.getNumberOfGuests = function() {

@@ -42,14 +42,14 @@ var SelectDishView = function(container, model){
 
 
 	//Lab 2
-	this.update = function(){
+	this.update = function(model){
 		//TODO
 		/*
 		Repopulate the view from the model.
 		*/
 	}
 	
-	model.addObserver(this);
+	model.addObserver(this.update);
 
 	/////////////
 	
