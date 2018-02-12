@@ -1,7 +1,9 @@
 var SidebarView = function(container, model){
 
 	var populateMenu = function(){
+		console.log("populateMenu");
 		var menu = model.getMenu();
+		console.log(menu);
 		for(key in menu){
 			var dish = model.getDish(menu[key]);
 

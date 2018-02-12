@@ -51,7 +51,6 @@ var DinnerModel = function() {
 		for (key in menuArray){
 			var dish = this.getDish(menuArray[key]);
 			if (dish.type == type){
-				//console.log(dish);
 				return dish;
 			}
 		}
@@ -70,7 +69,6 @@ var DinnerModel = function() {
 			var dish = this.getDish(menuArray[key]);
 			dishesOnMenu.push(dish);
 		}
-		//console.log("Returning dishes on the menu:",dishesOnMenu);
 		return dishesOnMenu;
 	}
 
@@ -88,7 +86,6 @@ var DinnerModel = function() {
 				ingredientsArray.push(dishIngredients[ingredient]);
 			}
 		}
-		//console.log("Returning all ingredients on the menu.")
 		return ingredientsArray;
 	}
 
@@ -115,7 +112,6 @@ var DinnerModel = function() {
 			totalSum = totalSum + quantity*price;
 		}
 		totalSum = totalSum*numberOfGuests;
-		//console.log("Returning the total price of the menu:",totalSum);
 		return totalSum;
 	}
 
@@ -123,7 +119,7 @@ var DinnerModel = function() {
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		menuArray.push(id);
-		//notifyObserver
+		notifyObservers();
 	}
 
 	//Removes dish from menu
@@ -165,8 +161,8 @@ var DinnerModel = function() {
 	}
 
 	//function that returns a dish of specific ID
-	this.getDish = function (id) {
-	  for(key in dishes){
+	this.getDish = function (id){
+	  	for(key in dishes){
 			if(dishes[key].id == id) {
 				return dishes[key];
 			}

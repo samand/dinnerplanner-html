@@ -24,7 +24,7 @@ var SelectDishController = function(model, view, app){
 			div.addEventListener("click",function(div){clickDish(div)},false);
 		}
 	}
-
+	
 
 	this.update = function(model){
 		makeClickable();
