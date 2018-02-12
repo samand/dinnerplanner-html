@@ -13,7 +13,6 @@ var SelectDishController = function(model, view, app){
 	var clickDish = function(div){
 		var currentDishId = div.path[0].id;
 		model.setCurrentDish(currentDishId);
-		console.log("model.getCurrentDishId(): ",model.getCurrentDishId());
 		app.showDishDetailsScreen();
 	}
 

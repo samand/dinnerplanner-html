@@ -2,57 +2,73 @@ var DishDetailsView =function(container, model){
 	//Container - #dishDetails
 
 	//Dish Description
-
 	//Get dish from model
 	var dishID=1;
 	var dish = model.getDish(dishID);
 
-	//set dish title
+	//Find containers
 	var dishTitle = container.find("#dishTitle");
-	dishTitle.html(dish.name);
-
-	//Image
 	var dishImage = container.find("#dishImage");
-	dishImage.src = "images/".concat(dish.image);
-
-	//Dish description
 	var dishDescription = container.find("#dishDescription");
-	dishDescription.html(dish.description);
-	//Number of guests
 	var numberOfGuests = container.find("#numberOfGuests");
-	numberOfGuests.html(model.getNumberOfGuests());
-	
-	//Dish Ingredients
 	var ingredientsDisplay = container.find("#ingredientsDisplay");
+	var dishPrice = container.find("#dishPrice");
 
-	for(key in dish.ingredients){
-		var ingr = dish.ingredients[key];
-		var ingrQuantity = document.createElement("div");
-		ingrQuantity.innerHTML = ingr.quantity;
-		ingrQuantity.className = "col-xs-2 noMargin";
-		ingredientsDisplay.append(ingrQuantity);
 
-		var ingrUnit = document.createElement("div");
-		ingrUnit.innerHTML = "unit";
-		ingrUnit.className = "col-xs-2 noMargin";
-		ingredientsDisplay.append(ingrUnit);
-
-		var ingrName = document.createElement("div");
-		ingrName.innerHTML = ingr.name;
-		ingrName.className = "col-xs-4 noMargin";
-		ingredientsDisplay.append(ingrName);
-		var ingrPrice = document.createElement("div");
-		ingrPrice.innerHTML = "SEK ".concat(ingr.price.toString());
-		ingrPrice.className = "col-xs-4 noMargin";
-		ingredientsDisplay.append(ingrPrice);
-
+	var emptyIngredientsDisplay = function(){
+		ingredientsDisplay.empty(); //Throw away all old containers
+		var q = document.createElement("b");
+		var u = document.createElement("b");
+		var i = document.createElement("b");
+		var p = document.createElement("b");
+		q.className = "col-xs-2 noMargin";
+		u.className = "col-xs-2 noMargin";
+		i.className = "col-xs-2 noMargin";
+		p.className = "col-xs-2 noMargin";
+		q.innerHTML = "Quantity";
+		u.innerHTML = "Unit";
+		i.innerHTML = "Ingredient";
+		p.innerHTML = "Price";
 		var clear = document.createElement("div");
 		clear.className = "clearfix";
+		ingredientsDisplay.append(q);
+		ingredientsDisplay.append(u);
+		ingredientsDisplay.append(i);
+		ingredientsDisplay.append(p);
 		ingredientsDisplay.append(clear);
 	}
+
+	var populateIngredientsDisplay = function(dish){
+		for(key in dish.ingredients){
+			var ingr = dish.ingredients[key];
+			var ingrQuantity = document.createElement("div");
+			ingrQuantity.innerHTML = ingr.quantity;
+			ingrQuantity.className = "col-xs-2 noMargin";
+			ingredientsDisplay.append(ingrQuantity);
+
+			var ingrUnit = document.createElement("div");
+			ingrUnit.innerHTML = "unit";
+			ingrUnit.className = "col-xs-2 noMargin";
+			ingredientsDisplay.append(ingrUnit);
+
+			var ingrName = document.createElement("div");
+			ingrName.innerHTML = ingr.name;
+			ingrName.className = "col-xs-4 noMargin";
+			ingredientsDisplay.append(ingrName);
+			var ingrPrice = document.createElement("div");
+			ingrPrice.innerHTML = "SEK ".concat(ingr.price.toString());
+			ingrPrice.className = "col-xs-4 noMargin";
+			ingredientsDisplay.append(ingrPrice);
+
+			var clear = document.createElement("div");
+			clear.className = "clearfix";
+			ingredientsDisplay.append(clear);
+		}
+	}
+
 	//Displaying price of dish
-	var dishPrice = container.find("#dishPrice");
-	dishPrice.html(model.getDishPrice(dishID));
+	
+	
 
 	
 	this.hide = function(){
@@ -63,17 +79,21 @@ var DishDetailsView =function(container, model){
 		container[0].style.display = "inline";
 	}
 
-
-
-
-
-
 	//Lab 2
-	this.update = function(model){
-		//TODO
-		//Repopulate the view from the model.
+	this.update = function(){
+		console.log("dishdetailsview update");
+		if(model.getCurrentDishId()){
+			var currentDish = model.getCurrentDishId();
+			dish = model.getDish(currentDish);
+			dishTitle.html(dish.name);
+			dishImage.src = "images/".concat(dish.image);
+			dishDescription.html(dish.description);
+			numberOfGuests.html(model.getNumberOfGuests());
+			emptyIngredientsDisplay();
+			populateIngredientsDisplay(dish);
+			dishPrice.html(model.getDishPrice(currentDish));	
+		}
 	}
-	
 	model.addObserver(this.update);
 
 	/////////////

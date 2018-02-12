@@ -25,7 +25,7 @@ var DinnerModel = function() {
 	}
 	this.setCurrentDish = function(id){
 		currentDish = id; 
-		//notifyObservers
+		notifyObservers();
 	}
 
 	this.getCurrentDishId = function(){
