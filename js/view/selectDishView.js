@@ -2,11 +2,15 @@ var SelectDishView = function(container, model){
 	//Container - #selectDish
 
 	//Search Row
+	this.searchBtn = container.find("#searchButton")[0];
+	this.searchText = container.find("#searchText")[0];
+	this.searchCategory = container.find("#searchCategory")[0];
 	/*
 	TODO Populate the dropdown toggle dynamically
 	*/
 
 	//Results Row
+	this.searchResultsRow = container.find("#searchResultsRow");
 	var dishesToBeDisplayed = [1,2,3];
 	
 	var searchResultsRow = container.find("#searchResultsRow");

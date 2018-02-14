@@ -1,4 +1,7 @@
 var SidebarView = function(container, model){
+	this.addGuestBtn = container.find("#addGuest")[0];
+	this.removeGuestBtn = container.find("#removeGuest")[0];
+	this.confirmDinnerBtn = container.find("#confirmDinner")[0];
 
 	var populateMenu = function(){
 		var menu = model.getMenu();
@@ -8,7 +11,9 @@ var SidebarView = function(container, model){
 			var divName = document.createElement("div");
 			divName.className = "col-xs-6 noMargin";
 			divName.innerHTML = dish.name;
+			divName.id=dish.id;
 			menuItemsRow.append(divName);
+
 
 			var divPrice = document.createElement("div");
 			divPrice.className = "col-xs-6 noMargin";
