@@ -1,5 +1,7 @@
 var DishDetailsView =function(container, model){
 	//Container - #dishDetails
+	this.toSearch = container.find("#toSearch")[0];
+	this.addToMenu = container.find("#addToMenu")[0];
 
 	//Dish Description
 	//Get dish from model

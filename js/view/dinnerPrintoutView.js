@@ -1,5 +1,6 @@
 var DinnerPrintoutView = function(container, model){
 	//Container - #dinnerPrintout
+	this.editDinnerPrintout = container.find("#editDinnerPrintout");
 
 	//Header Row
 	var numberOfGuests = container.find("#numberOfGuests");

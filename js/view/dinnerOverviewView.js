@@ -1,5 +1,7 @@
 var DinnerOverviewView = function(container, model){
 	//Container - #dinnerOverview
+	this.editDinnerOverview = container.find("#editDinnerOverview")[0];
+	this.printRecipe = container.find("#printRecipe")[0];
 
 	//Header Row
 	var numberOfGuests = container.find("#numberOfGuests");
