@@ -14,7 +14,7 @@ var SelectDishView = function(container, model){
 	var showSearchResults = function(){
 		searchResultsRow.empty();
 		var searchResults = model.getSearchResults();
-		for(key in searchResults){
+		for(var key in searchResults){
 			//For each dish among the search results
 			//Create elements and set formatting
 			var div = document.createElement("div");
@@ -43,7 +43,7 @@ var SelectDishView = function(container, model){
 		container[0].style.display = "inline";
 	}
 
-	this.update = function(model){
+	this.update = function(){
 		showSearchResults();
 	}
 	

@@ -8,7 +8,7 @@ var DinnerOverviewView = function(container, model){
 	//Dinner Display Row
 	var menu = model.getMenu();
 	var dinnerDisplayRow = container.find("#dinnerDisplayRow");
-	for(key in menu){
+	for(var key in menu){
 		//Create placeholders and set formatting
 		var div = document.createElement("div");
 		div.className = "col-xs-6 col-sm-4 border";
@@ -37,7 +37,7 @@ var DinnerOverviewView = function(container, model){
 		container[0].style.display = "inline";
 	}
 
-	this.update = function(model){
+	this.update = function(){
 		//TODO
 		//Repopulate the view from the model.
 	}

@@ -1,7 +1,7 @@
 //DinnerModel Object constructor SAVVAS
 var DinnerModel = function() {
 	var numberOfGuests = 4;//Default value
-	var menuArray=[1,2,3];
+	var menuArray=[];
 	var searchResults=[]; //For dishSelectView
 	var currentDish =1; //For dishDetailsView
 	var observers =[]; //An array of update functions. The observers come from the views.
@@ -14,9 +14,10 @@ var DinnerModel = function() {
 	}
 
 	var notifyObservers = function(){
-		for (key in observers){
+		for (var key in observers){
 			observers[key]();
 		}
+		console.log(observers);
 		/*
 		All functions in the model that modify the model must call this function.
 		for obs in observers:
@@ -26,6 +27,7 @@ var DinnerModel = function() {
 	this.setCurrentDish = function(id){
 		currentDish = id; 
 		notifyObservers();
+
 	}
 
 	this.getCurrentDishId = function(){
@@ -48,7 +50,7 @@ var DinnerModel = function() {
 
 	//Returns the dish that is on the menu for selected type
 	this.getSelectedDish = function(type) {
-		for (key in menuArray){
+		for (var key in menuArray){
 			var dish = this.getDish(menuArray[key]);
 			if (dish.type == type){
 				return dish;
@@ -65,7 +67,7 @@ var DinnerModel = function() {
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
 		var dishesOnMenu=[];
-		for (key in menuArray){
+		for (var key in menuArray){
 			var dish = this.getDish(menuArray[key]);
 			dishesOnMenu.push(dish);
 		}
@@ -80,7 +82,7 @@ var DinnerModel = function() {
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
 		var ingredientsArray = [];
-		for (key in menuArray){
+		for (var key in menuArray){
 			var dishIngredients = this.getIngredientsOfDish(menuArray[key]);
 			for (ingredient in dishIngredients){
 				ingredientsArray.push(dishIngredients[ingredient]);
@@ -92,7 +94,7 @@ var DinnerModel = function() {
 	this.getDishPrice = function(id){
 		var dishPrice = 0;
 		var ingredients = this.getIngredientsOfDish(id);
-		for (key in ingredients){
+		for (var key in ingredients){
 			var quantity = ingredients[key].quantity;
 			var price = ingredients[key].price;
 			dishPrice += quantity*price;
@@ -106,7 +108,7 @@ var DinnerModel = function() {
 	this.getTotalMenuPrice = function() {
 		var totalSum = 0;
 		var ingredientsArray = this.getAllIngredients();
-		for (key in ingredientsArray){
+		for (var key in ingredientsArray){
 			var quantity = ingredientsArray[key].quantity;
 			var price = ingredientsArray[key].price;
 			totalSum = totalSum + quantity*price;
@@ -162,7 +164,7 @@ var DinnerModel = function() {
 
 	//function that returns a dish of specific ID
 	this.getDish = function (id){
-	  	for(key in dishes){
+	  	for(var key in dishes){
 			if(dishes[key].id == id) {
 				return dishes[key];
 			}

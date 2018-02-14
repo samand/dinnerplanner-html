@@ -19,7 +19,7 @@ var SelectDishController = function(model, view, app){
 	//Each dish-div should be clickable
 	var makeClickable = function(){
 		var searchResults = model.getSearchResults();
-		for(key in searchResults){
+		for(var key in searchResults){
 			var div = document.getElementById(searchResults[key].id);
 			div.addEventListener("click",function(div){clickDish(div)},false);
 		}

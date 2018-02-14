@@ -6,7 +6,7 @@
 	var dish=model.getDish(dishID);
 	var ingredientsDisplay = container.find("#ingredientsDisplay");
 
-	for(key in dish.ingredients){
+	for(var key in dish.ingredients){
 		var ingr = dish.ingredients[key];
 		var ingrQuantity = document.createElement("div");
 		ingrQuantity.innerHTML = ingr.quantity;
@@ -37,7 +37,7 @@
 /*
 	if(document.getElementById("DishIngredients")){
 		this.dishIngredients = document.getElementById("DishIngredients");
-		for(key in this.dish.ingredients){
+		for(var key in this.dish.ingredients){
 			this.ingr = this.dish.ingredients[key]; //For readability
 			this.row = document.createElement('tr');
 			this.dishIngredients.appendChild(this.row);

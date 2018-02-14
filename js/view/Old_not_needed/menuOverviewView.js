@@ -18,7 +18,7 @@ var MenuOverviewView = function(container, model){
 	numberOfGuests.html(model.getNumberOfGuests());	
 
 	var itemDisplay = container.find("#menuDisplay");
-	for(key in menu){
+	for(var key in menu){
 		//Create placeholders and set formatting
 		var dish = document.createElement("div");
 		dish.className = "col-xs-6 col-sm-4 border";

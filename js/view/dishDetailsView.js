@@ -37,7 +37,7 @@ var DishDetailsView =function(container, model){
 	}
 
 	var populateIngredientsDisplay = function(dish){
-		for(key in dish.ingredients){
+		for(var key in dish.ingredients){
 			var ingr = dish.ingredients[key];
 			var ingrQuantity = document.createElement("div");
 			ingrQuantity.innerHTML = ingr.quantity;
@@ -45,7 +45,7 @@ var DishDetailsView =function(container, model){
 			ingredientsDisplay.append(ingrQuantity);
 
 			var ingrUnit = document.createElement("div");
-			ingrUnit.innerHTML = "unit";
+			ingrUnit.innerHTML = ingr.unit;
 			ingrUnit.className = "col-xs-2 noMargin";
 			ingredientsDisplay.append(ingrUnit);
 
@@ -66,10 +66,13 @@ var DishDetailsView =function(container, model){
 	
 	this.hide = function(){
 		container[0].style.display = "none";
+		//Remove observer
 	}
 
 	this.show = function(){
 		container[0].style.display = "inline";
+		//addObserver
+		//And update?
 	}
 
 	this.update = function(){

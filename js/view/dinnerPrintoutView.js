@@ -8,7 +8,7 @@ var DinnerPrintoutView = function(container, model){
 	//Dinner Display Row
 	var menu = model.getMenu();
 	menuPrintout = container.find("#printoutDisplay");
-	for(key in menu){
+	for(var key in menu){
 		//Create elements and set formatting
 		var row = document.createElement("div");
 		row.className = "row border";
@@ -40,7 +40,7 @@ var DinnerPrintoutView = function(container, model){
 		container[0].style.display = "inline";
 	}
 
-	this.update = function(model){
+	this.update = function(){
 		//TODO
 		//Repopulate the view from the model.
 	}

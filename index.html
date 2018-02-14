@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Welcome - Dinner planner</title>
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="style.css"> <!--"http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" -->
+	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 </head>
 
@@ -96,14 +96,8 @@
 					<div class="col-sm-5 border" style="background: antiquewhite">
 						<div>
 							<h3>Ingredients for <span id="numberOfGuests"></span> persons</h3>
-							<div id="ingredientsDisplay"> <!--Why no row here?-->
-								<b class="col-xs-2 noMargin">Quantity</b>
-								<b class="col-xs-2 noMargin">Unit</b>
-								<b class="col-xs-4 noMargin">Ingredient</b>
-								<b class="col-xs-4 noMargin">Price</b>
-								<div class="clearfix"></div>
-							</div>
-							<div class = "row"> <!--Why is there a row here? -->
+							<div id="ingredientsDisplay" class="row"></div>
+							<div class = "row">
 								<div class="col-sm-offset-1" style= "float: left">
 									<button id="addToMenu" class="btn btn-warning" type="button">Add to menu</button>
 								</div>
