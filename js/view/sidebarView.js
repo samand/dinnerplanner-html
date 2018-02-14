@@ -26,7 +26,6 @@ var SidebarView = function(container, model){
 
 	//Dishes on the menu
 	var menuItemsRow = container.find("#menuItems");
-	populateMenu();
 
 	//Price of menu
 	var priceOfMenu = container.find("#priceOfMenu");

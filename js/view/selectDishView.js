@@ -28,6 +28,8 @@ var SelectDishView = function(container, model){
 			dishName.innerHTML = dish.name;
 
 			div.id = dish.id;
+			dishName.id=dish.id; //#badProgramming
+			img.id=dish.id;
 			//Attach to parents
 			div.appendChild(img);
 			div.appendChild(dishName);

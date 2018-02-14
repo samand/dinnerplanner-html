@@ -3,7 +3,7 @@ var DinnerModel = function() {
 	var numberOfGuests = 4;//Default value
 	var menuArray=[];
 	var searchResults=[]; //For dishSelectView
-	var currentDish =1; //For dishDetailsView
+	var currentDish; //For dishDetailsView
 	var observers =[]; //An array of update functions. The observers come from the views.
 	//Lab 2
 	this.addObserver = function(observer){
@@ -17,7 +17,6 @@ var DinnerModel = function() {
 		for (var key in observers){
 			observers[key]();
 		}
-		console.log(observers);
 		/*
 		All functions in the model that modify the model must call this function.
 		for obs in observers:

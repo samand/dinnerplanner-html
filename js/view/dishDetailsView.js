@@ -76,7 +76,6 @@ var DishDetailsView =function(container, model){
 	}
 
 	this.update = function(){
-		console.log("dishdetailsview update");
 		if(model.getCurrentDishId()){
 			var currentDish = model.getCurrentDishId();
 			dish = model.getDish(currentDish);
