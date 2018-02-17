@@ -49,8 +49,10 @@ var SelectDishView = function(container, model){
 		container[0].style.display = "inline";
 	}
 
-	this.update = function(){
-		showSearchResults();
+	this.update = function(changeDetails){
+		if(changeDetails=="searchResults"){
+			showSearchResults();
+		}
 	}
 	
 	model.addObserver(this.update);	

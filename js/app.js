@@ -1,4 +1,9 @@
 $(function() {
+	this.switchScreen = function(oldPage, newPage){
+		//TODO: Switch all the show__screen for this function.
+		console.log(oldPage);
+		console.log(newPage);
+	}
 	this.showWelcomeScreen = function(){
 		console.log("showWelcomeScreen");
 		welcomeView.show();

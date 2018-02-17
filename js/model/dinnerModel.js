@@ -13,9 +13,10 @@ var DinnerModel = function() {
 		//Remove observer from observers-array
 	}
 
-	var notifyObservers = function(){
+	var notifyObservers = function(changeDetails){
+		//changeDetails is a string with the id of the DOM-object or dinnerModel variable that is being changed.
 		for (var key in observers){
-			observers[key]();
+			observers[key](changeDetails);
 		}
 		/*
 		All functions in the model that modify the model must call this function.
@@ -25,7 +26,7 @@ var DinnerModel = function() {
 	}
 	this.setCurrentDish = function(id){
 		currentDish = id; 
-		notifyObservers();
+		notifyObservers("currentDish");
 
 	}
 
@@ -36,11 +37,11 @@ var DinnerModel = function() {
 
 	this.incrementNumberOfGuests = function () {
 		numberOfGuests++;
-		notifyObservers();
+		notifyObservers("numberOfGuests");
 	}
 	this.decrementNumberOfGuests = function (){
 		numberOfGuests--;
-		notifyObservers();
+		notifyObservers("numberOfGuests");
 	}
 
 	this.getNumberOfGuests = function() {
@@ -120,13 +121,13 @@ var DinnerModel = function() {
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		menuArray.push(id);
-		notifyObservers();
+		notifyObservers("menuChange");
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		menuArray.splice(menuArray.indexOf(id),1);
-		//notifyObserver
+		notifyObservers("menuChange");
 	}
 
 
@@ -155,7 +156,7 @@ var DinnerModel = function() {
 
 	this.search = function(type,filter){
 		searchResults = this.getAllDishes(type,filter);
-		notifyObservers(); //Questionable if searchResults should be handled like this in the model.
+		notifyObservers("searchResults"); //Questionable if searchResults should be handled like this in the model.
 	}
 	this.getSearchResults = function(){
 		return searchResults;

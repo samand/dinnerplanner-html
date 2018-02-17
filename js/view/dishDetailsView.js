@@ -3,9 +3,6 @@ var DishDetailsView =function(container, model){
 	this.toSearch = container.find("#toSearch")[0];
 	this.addToMenu = container.find("#addToMenu")[0];
 
-	//Dish Description
-	//Get dish from model
-
 	//Find containers
 	var dishTitle = container.find("#dishTitle");
 	var dishImage = container.find("#dishImage");
@@ -77,14 +74,20 @@ var DishDetailsView =function(container, model){
 		//And update?
 	}
 
-	this.update = function(){
-		if(model.getCurrentDishId()){
+	this.update = function(changeDetails){
+		if(changeDetails=="numberOfGuests"){
+			numberOfGuests.html(model.getNumberOfGuests());
+			if (model.getCurrentDishId()){
+				var currentDish = model.getCurrentDishId();
+				dishPrice.html(model.getDishPrice(currentDish));
+			}
+		}
+		if(changeDetails=="currentDish"){
 			var currentDish = model.getCurrentDishId();
 			dish = model.getDish(currentDish);
 			dishTitle.html(dish.name);
 			dishImage.src = "images/".concat(dish.image);
 			dishDescription.html(dish.description);
-			numberOfGuests.html(model.getNumberOfGuests());
 			emptyIngredientsDisplay();
 			populateIngredientsDisplay(dish);
 			dishPrice.html(model.getDishPrice(currentDish));	

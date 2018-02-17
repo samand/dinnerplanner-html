@@ -3,23 +3,36 @@ var SidebarView = function(container, model){
 	this.removeGuestBtn = container.find("#removeGuest")[0];
 	this.confirmDinnerBtn = container.find("#confirmDinner")[0];
 
+	var updateDishPrices = function(){
+		var menu = model.getMenu()
+		for(var key in menu){
+			var dishId = menu[key];
+			var div = container.find("#dishId_".concat(dishId));
+			var divPrice = div.find("#dishPrice")[0];
+			divPrice.innerHTML = model.getDishPrice(menu[key]);
+		}
+	}
+
 	var populateMenu = function(){
 		var menu = model.getMenu();
 		for(var key in menu){
 			var dish = model.getDish(menu[key]);
+			var div = document.createElement("div");
+			div.id = "dishId_".concat(dish.id);
 
-			var divName = document.createElement("div");
-			divName.className = "col-xs-6 noMargin";
-			divName.innerHTML = dish.name;
-			divName.id=dish.id;
-			menuItemsRow.append(divName);
+			var dishName = document.createElement("div");
+			dishName.className = "col-xs-6 noMargin";
+			dishName.innerHTML = dish.name;
+			div.append(dishName);
 
 
-			var divPrice = document.createElement("div");
-			divPrice.className = "col-xs-6 noMargin";
-			divPrice.innerHTML = model.getDishPrice(menu[key]);
-			menuItemsRow.append(divPrice);
+			var dishPrice = document.createElement("div");
+			dishPrice.className = "col-xs-6 noMargin";
+			dishPrice.innerHTML = model.getDishPrice(menu[key]);
+			dishPrice.id = "dishPrice";
+			div.append(dishPrice);
 
+			menuItemsRow.append(div);
 			var clear = document.createElement("div");
 			clear.className = "clearfix";
 			menuItemsRow.append(clear);
@@ -44,16 +57,19 @@ var SidebarView = function(container, model){
 		container[0].style.display = "inline";
 	}
 
-	this.update = function(){
+	this.update = function(changeDetails){
+		if(changeDetails=="numberOfGuests"){
+			numberOfGuests.html(model.getNumberOfGuests());
+			priceOfMenu.html(model.getTotalMenuPrice());
+			updateDishPrices();
+		}
 		//Ugly solution - remove everything and redraw. 
-		//Update number of guests
-		numberOfGuests.html(model.getNumberOfGuests());
 		//Remove old dishes
-		menuItemsRow.empty();
-		//Add dishes from the menu
-		populateMenu();
-		//Update price of menu
-		priceOfMenu.html(model.getTotalMenuPrice());
+		if(changeDetails=="menuChange"){
+			menuItemsRow.empty();
+			populateMenu();
+			priceOfMenu.html(model.getTotalMenuPrice());
+		}
 	}
 	model.addObserver(this.update);
 }
