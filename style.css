@@ -31,14 +31,15 @@
 	border-bottom: 0;
 	border-left: 0;
 }
-.container-fluid#info-container {
+
+#info-container {
 	margin-top: 100px;
 	margin-left: 100px
 }
 
 
 
-#welcomeButton{
+#editWelcome{
 	margin-left: 30%;
 	margin-right: 30%;
 
