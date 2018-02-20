@@ -1,8 +1,9 @@
 var DinnerOverviewController = function(model, view, app){
-	var editDinnerBtn = view.editDinnerOverview;
-	//var editDinnerBtn = document.getElementById("editDinnerOverview");
+	var editDinnerBtn = view.editDinnerButton;
 	editDinnerBtn.addEventListener("click", app.showDishSearchScreen, false);
-	var printRecipeBtn = view.printRecipe;
-	//var printRecipeBtn = document.getElementById("printRecipe");
+	
+	var printRecipeBtn = view.printRecipeButton;
 	printRecipeBtn.addEventListener("click", app.showDinnerPrintoutScreen, false);
+	//printRecipeBtn.addEventListener("click",function(){app.switchScreen(view,"dinnerPrintout")},false);
+
 }

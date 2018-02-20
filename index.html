@@ -20,7 +20,7 @@
 		<div class="row" id="welcome">
 			<div class="col-sm-offset-3 col-sm-6">
 				<p id="welcomeText">[Welcome text. Fetched by view.]</p>
-				<button class="btn btn-warning" id="editWelcome" type="button">Create New Dinner</button>
+				<button class="btn btn-warning" id="welcomeButton" type="button">Create New Dinner</button>
 			</div>
 		</div>
 		<!--END WELCOME AND ENTER-->
@@ -29,34 +29,33 @@
 		<div class="row">
 			<!--SIDEBAR-->
 			<div id="sidebar" class="col-sm-3 col-xs-12 border">
-				<!--<button class="btn btn-warning" data-toggle="collapse" data-target="#sidebar" style= "float:right">MENU</button>-->
 				<div>
 					<h3>My Dinner</h3>
 					<div class="row">Number of guests: 
 						<span id="numberOfGuests"></span>
-						<button id="addGuest" class="btn">
+						<button id="addGuestButton" class="btn">
 							<span class="glyphicon glyphicon-plus"></span>
 						</button>
-						<button id="removeGuest" class="btn">
+						<button id="removeGuestButton" class="btn">
 							<span class="glyphicon glyphicon-minus"></span>
 						</button>
 					</div>
 					<div class="row border">
-						<h4 class="col-xs-6 alignLeft noMargin">Dish name</h4>
-						<h4 class="col-xs-6 alignRight nomargin">Price</h4>
+						<h4 class="col-xs-6 alignLeft">Dish name</h4>
+						<h4 class="col-xs-6 alignRight">Price</h4>
 					</div>
 					<div id="menuItems" class="row border"></div>
 					<div class="row">
 						<div class="col-xs-6">Price of menu: </div>
 						<div id="priceOfMenu" class="col-xs-6"></div>
 					</div>
-					<button id="confirmDinner" class="btn btn-warning btn-block">Confirm Dinner</button>
+					<button id="confirmDinnerButton" class="btn btn-warning btn-block">Confirm Dinner</button>
 				</div>
 			</div>
 			<!--END SIDEBAR-->
 
 			<!--SELECT DISH -->
-			<div id="selectDish" class="col-sm-9 col-xs-12" style="display:none">
+			<div id="selectDish" class="col-sm-9 col-xs-12">
 				<div>
 					<!--SEARCH BAR -->
 					<div id="searchBarRow" class="row">
@@ -88,22 +87,18 @@
 							<h2 id="dishTitle"></h2>
 							<img id="dishImage">
 							<p id="dishDescription"></p>
-							<button id="toSearch" class="btn btn-warning" type="button">Back to search</button>
+							<button id="toSearchButton" class="btn btn-warning" type="button">Back to search</button>
 						</div>
 					</div>
 					<!--END DISH INSTRUCTIONS -->
 					<!--DISH INGREDIENTS -->
-					<div class="col-sm-5 col-xs-12 border" style="background: antiquewhite">
+					<div id="dishIngredients" class="col-sm-5 col-xs-12 border">
 						<div>
 							<h3>Ingredients for <span id="numberOfGuests"></span> persons</h3>
 							<div id="ingredientsDisplay" class="row"></div>
 							<div class = "row">
-								<div class="col-sm-offset-1" style= "float: left">
-									<button id="addToMenu" class="btn btn-warning" type="button">Add to menu</button>
-								</div>
-								<div class="col-sm-offset-3" style="float: left">
-									<b>Dish price: <span id="dishPrice"></span> SEK</b>
-								</div>
+								<button id="addToMenuButton" class="btn btn-warning col-sm-offset-1" type="button">Add to menu</button>
+								<b class="col-sm-offset-3">Dish price: <span id="dishPrice"></span> SEK</b>
 							</div>
 						</div>
 					</div>
@@ -118,10 +113,10 @@
 		<div id="dinnerOverview">
 			<div class="row">
 				<h3>My dinner: <span id="numberOfGuests"></span> people </h3>
-				<button id="editDinnerOverview" class="btn btn-warning" type="button" style= "float:right">Go back and edit dinner</button>
+				<button id="editDinnerButton" class="btn btn-warning" type="button">Go back and edit dinner</button>
 			</div>
 			<div id="dinnerDisplayRow" class="row"></div>
-			<button id="printRecipe" class="btn btn-warning" type="button">Print full recipe</button>
+			<button id="printRecipeButton" class="btn btn-warning" type="button">Print full recipe</button>
 		</div>
 		<!--END DINNER OVERVIEW -->
 
@@ -129,7 +124,7 @@
 		<div id="dinnerPrintout">
 			<div class="row">
 				<h3>My dinner: <span id="numberOfGuests"></span> people </h3>
-				<button id="editDinnerPrintout" class="btn btn-warning" type="button" style= "float:right">Go back and edit dinner</button>
+				<button id="editDinnerButton" class="btn btn-warning" type="button">Go back and edit dinner</button>
 			</div>
 			<div id="printoutDisplay"></div>
 		</div>

@@ -1,7 +1,7 @@
 var SidebarView = function(container, model){
-	this.addGuestBtn = container.find("#addGuest")[0];
-	this.removeGuestBtn = container.find("#removeGuest")[0];
-	this.confirmDinnerBtn = container.find("#confirmDinner")[0];
+	this.addGuestButton = container.find("#addGuestButton")[0];
+	this.removeGuestButton = container.find("#removeGuestButton")[0];
+	this.confirmDinnerButton = container.find("#confirmDinnerButton")[0];
 
 	var updateDishPrices = function(){
 		var menu = model.getMenu()

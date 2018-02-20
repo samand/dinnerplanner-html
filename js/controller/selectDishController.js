@@ -21,7 +21,6 @@ var SelectDishController = function(model, view, app){
 
 	//Each dish-div should be clickable
 	var makeClickable = function(){
-		console.log("makeClickable called");
 		var searchResults = model.getSearchResults();
 		var searchResultsRow = view.searchResultsRow;
 		for(var key in searchResults){

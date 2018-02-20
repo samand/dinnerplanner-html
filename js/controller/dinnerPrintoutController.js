@@ -1,5 +1,4 @@
 var DinnerPrintoutController = function(model, view, app){
-	var editDinnerBtn = view.editDinnerPrintout;
-	//var editDinnerBtn = document.getElementById("editDinnerPrintout");
+	var editDinnerBtn = view.editDinnerButton;
 	editDinnerBtn.addEventListener("click", app.showDishSearchScreen, false);
 }

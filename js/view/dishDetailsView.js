@@ -1,7 +1,7 @@
 var DishDetailsView =function(container, model){
 	//Container - #dishDetails
-	this.toSearch = container.find("#toSearch")[0];
-	this.addToMenu = container.find("#addToMenu")[0];
+	this.toSearchButton = container.find("#toSearchButton")[0];
+	this.addToMenuButton = container.find("#addToMenuButton")[0];
 
 	//Find containers
 	var dishTitle = container.find("#dishTitle");

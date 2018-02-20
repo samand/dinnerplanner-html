@@ -1,6 +1,5 @@
 var WelcomeController = function(model, view, app) {
-	//Create new dinner
-    //var welcomeBtn= document.getElementById("welcomeButton");
-    var welcomeBtn = view.editWelcome;
+	//Welcome screen
+    var welcomeBtn = view.welcomeButton;
     welcomeBtn.addEventListener("click", app.showDishSearchScreen, false);
 }
