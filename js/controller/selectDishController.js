@@ -22,6 +22,7 @@ var SelectDishController = function(model, view, app){
 	//Each dish-div should be clickable
 	var makeClickable = function(){
 		var searchResults = model.getSearchResults();
+		console.log(searchResults);
 		var searchResultsRow = view.searchResultsRow;
 		for(var key in searchResults){
 			var id = "#".concat(searchResults[key].id);

@@ -28,8 +28,8 @@ var SelectDishView = function(container, model){
 
 			//Get dish and insert relevant things into the placeholders
 			var dish = searchResults[key];
-			img.src = "images/".concat(dish.image);
-			dishName.innerHTML = dish.name;
+			img.src; // = dish.imageUrls[0]; //TODO
+			dishName.innerHTML = dish.title;
 
 			div.id = dish.id;
 			dishName.id=dish.id; //#badProgramming

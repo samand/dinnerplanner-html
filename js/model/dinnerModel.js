@@ -138,38 +138,39 @@ var DinnerModel = function() {
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
-    /*
-	this.getAllDishes = function (type,filter) {
-	  return dishes.filter(function(dish) {
-		var found = true;
-		if(filter){
-			found = false;
-			dish.ingredients.forEach(function(ingredient) {
-				if(ingredient.name.indexOf(filter)!=-1) {
-					found = true;
-				}
-			});
-			if(dish.name.indexOf(filter) != -1)
-			{
-				found = true;
-			}
-		}
-	  	return dish.type == type && found;
-	  });
-	}
-    */
+    
+	this.getAllDishesLocal = function (type,filter){
+        //Search function. Makes a local search in the dishes-array.
+        return dishes.filter(function(dish){
+            var found = true;
+            if(filter){
+                found = false;
+                dish.ingredients.forEach(function(ingredient){
+                    if(ingredient.name.indexOf(filter)!=-1){
+                        found = true;
+                    }
+                });
+                if(dish.name.indexOf(filter) != -1){
+                    found = true;
+                }
+            }
+            return dish.type == type && found;
+        });
+    }
+
     var getAllDishesSuccess = function(data){
-        console.log(data.results);
         searchResults = data.results;
         notifyObservers("searchResults");
     }
 
-    this.getAllDishes = function (type, filter){ //, callback, errorCallback
-        console.log(type);
+    this.getAllDishesApi = function (type, filter){ //, callback, errorCallback
+        //Search function. Calls API with optional type (ie main course) and filter (a string with search word)
         $.ajax({
             url: api_url,
             headers: {
-                'X-Mashape-Key': api_key,
+                'X-Mashape-Key': api_key
+            },
+            data: {
                 'type':type,
                 'query':filter
             },
@@ -184,12 +185,15 @@ var DinnerModel = function() {
     }
 
     this.search = function(type,filter){
-        searchResults = this.getAllDishes(type,filter);
-        console.log("searchResults")
-        console.log(searchResults)
-        notifyObservers("searchResults"); //Questionable if searchResults should be handled like this in the model.
+        //Takes a type, i.e. main course, appetizer etc.
+        //and a filter. Calls api or local search function
+        this.getAllDishesApi(type,filter); //Call to API
+        //searchResults = this.getAllDishesLocal(type,filter); notifyObservers("searchResults");//Local call
+
 	}
+
 	this.getSearchResults = function(){
+        console.log(searchResults)
 		return searchResults;
 	}
 
@@ -201,6 +205,9 @@ var DinnerModel = function() {
         }
     }
 }
+
+
+
 
 
 	// the dishes variable contains an array of all the
