@@ -4,7 +4,7 @@ var SidebarView = function(container, model){
 	this.confirmDinnerButton = container.find("#confirmDinnerButton")[0];
 
 	var updateDishPrices = function(){
-		var menu = model.getMenu()
+		var menu = model.getMenuItems()
 		for(var key in menu){
 			var dishId = menu[key];
 			var div = container.find("#dishId_".concat(dishId));

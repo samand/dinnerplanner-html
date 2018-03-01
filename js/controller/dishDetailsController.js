@@ -3,8 +3,5 @@ var DishDetailsController = function(model, view, app){
 	toSearchBtn.addEventListener("click",app.showDishSearchScreen,false);
 
 	var addToMenuBtn = view.addToMenuButton;
-	//var addToMenuBtn = document.getElementById("addToMenu");
 	addToMenuBtn.addEventListener("click",function(){model.addDishToMenu(model.getCurrentDishId())},false);
-
-
 }

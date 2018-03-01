@@ -14,14 +14,12 @@ var SelectDishController = function(model, view, app){
 	var clickDish = function(div){
 		var currentDishId = div.path[0].id;
 		model.setCurrentDish(currentDishId);
-		model.setCurrentDishApi(currentDishId);
 		app.showDishDetailsScreen();
 	}
 
 	//Each dish-div should be clickable
 	var makeClickable = function(){
 		var searchResults = model.getSearchResults();
-		console.log(searchResults);
 		for(var key in searchResults){
 
 			var id = "#".concat(searchResults[key].id);
