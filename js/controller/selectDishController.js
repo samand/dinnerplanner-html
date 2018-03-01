@@ -1,12 +1,10 @@
 var SelectDishController = function(model, view, app){
 	var searchBtn = view.searchBtn;
+	var searchResultsRow = view.searchResultsRow;
 	
-	//var searchBtn= document.getElementById("searchButton");
 	var clickSearch = function(){
 		var searchText = view.searchText;
-		//var searchText = document.getElementById("searchText");
 		var searchCategory = view.searchCategory;
-		//var searchCategory = document.getElementById("searchCategory");
 		var categoryChoice = searchCategory.options[searchCategory.selectedIndex];
 
 		model.search(categoryChoice.value,searchText.value);
@@ -16,6 +14,7 @@ var SelectDishController = function(model, view, app){
 	var clickDish = function(div){
 		var currentDishId = div.path[0].id;
 		model.setCurrentDish(currentDishId);
+		model.setCurrentDishApi(currentDishId);
 		app.showDishDetailsScreen();
 	}
 
@@ -23,8 +22,8 @@ var SelectDishController = function(model, view, app){
 	var makeClickable = function(){
 		var searchResults = model.getSearchResults();
 		console.log(searchResults);
-		var searchResultsRow = view.searchResultsRow;
 		for(var key in searchResults){
+
 			var id = "#".concat(searchResults[key].id);
 			var div = searchResultsRow.find(id)[0];
 			div.addEventListener("click",function(div){clickDish(div)},false);

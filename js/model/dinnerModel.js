@@ -5,8 +5,17 @@ var DinnerModel = function() {
 	var searchResults=[]; //For dishSelectView
 	var currentDish; //For dishDetailsView
 	var observers =[]; //An array of update functions. The observers come from the views.
+    var currentDishApi={
+        'id':"",
+        'title':"",
+        'type':"",
+        'image':"",
+        'summary':"",
+        'description':"",
+        'price':"",
+        'ingredients':[{}]
+    }
 
-    var api_url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search";
     var api_key = "Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB"
 	
 	this.addObserver = function(observer){
@@ -28,7 +37,7 @@ var DinnerModel = function() {
 		*/
 	}
 	this.setCurrentDish = function(id){
-		currentDish = id; 
+		currentDish = id;
 		notifyObservers("currentDish");
 
 	}
@@ -59,7 +68,6 @@ var DinnerModel = function() {
 				return dish;
 			}
 		}
-		//console.log("OBS! Couldn't find the requested dish");
 	}
 
 	//Returns the menuArray, just containing the id of each dish on the menu.
@@ -166,7 +174,7 @@ var DinnerModel = function() {
     this.getAllDishesApi = function (type, filter){ //, callback, errorCallback
         //Search function. Calls API with optional type (ie main course) and filter (a string with search word)
         $.ajax({
-            url: api_url,
+            url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search",
             headers: {
                 'X-Mashape-Key': api_key
             },
@@ -193,12 +201,76 @@ var DinnerModel = function() {
 	}
 
 	this.getSearchResults = function(){
-        console.log(searchResults)
 		return searchResults;
 	}
 
+    this.getCurrentDishApi = function(){
+        return currentDishApi;
+    }
+    this.setCurrentDishApi = function(id){
+        if (id != currentDishApi.id){
+            var summary_url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/".concat(id).concat("/summary");
+            var information_url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/".concat(id).concat("/information");
+            $.ajax({
+                url: summary_url,
+                headers: {
+                    'X-Mashape-Key':api_key
+                },
+                success: function(data){
+                    currentDishApi.id = data.id;
+                    currentDishApi.summary = data.summary;
+                    currentDishApi.title = data.title;
+                    notifyObservers("currentDish")
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            })
+            $.ajax({
+                url: information_url,
+                headers:{
+                    'X-Mashape-Key':api_key
+                },
+                success: function(data){
+                    currentDishApi.instructions = data.instructions;
+                    currentDishApi.ingredients = data.extendedIngredients;
+                    currentDishApi.price = data.pricePerServing;
+                    currentDishApi.image = data.image;
+                    console.log(data.image);
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            })
+        }
+    }
+
+
 	//function that returns a dish of specific ID
 	this.getDish = function (id){
+        var dish= {
+            'id':id,
+            'name':"Name, TODO, get from API",
+            'type':"Type, TODO, get from API",
+            'image':"toast.jpg",
+            'description':"Get description from API",
+            'ingredients':[{
+                'name':'eggs',
+                'quantity':0.5,
+                'unit':'',
+                'price':10
+            },{
+                'name':'milk',
+                'quantity':30,
+                'unit':'ml',
+                'price':6
+            }]
+        }
+        return dish;
+    }
+    /*
+
+
         for(var key in dishes){
          if(dishes[key].id == id) {
             return dishes[key];
@@ -207,7 +279,7 @@ var DinnerModel = function() {
 }
 
 
-
+*/
 
 
 	// the dishes variable contains an array of all the

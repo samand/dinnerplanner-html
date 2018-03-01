@@ -28,7 +28,8 @@ var SelectDishView = function(container, model){
 
 			//Get dish and insert relevant things into the placeholders
 			var dish = searchResults[key];
-			img.src; // = dish.imageUrls[0]; //TODO
+			//TODO Make these images fit, and make the surrounding divs a fixed size.
+			img.src = "https://spoonacular.com/recipeImages/".concat(dish.id).concat("-240x150.jpg");
 			dishName.innerHTML = dish.title;
 
 			div.id = dish.id;
