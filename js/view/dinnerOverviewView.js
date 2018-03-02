@@ -45,5 +45,5 @@ var DinnerOverviewView = function(container, model){
 			}
 		}
 	}
-	model.addObserver(this.update);
+	//model.addObserver(this.update);
 }

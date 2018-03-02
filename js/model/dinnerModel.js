@@ -2,11 +2,12 @@
 var DinnerModel = function() {
     var api_key = "Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB"
 	var numberOfGuests = 4;//Default value
-	var menuArray=[]; //Shall contain only id:s of menu items. 
+	var menuArray=[]; //Shall contain only id:s of menu items. [5, 6, 9, 46 etc]
+    var menuItems=[] //Store data for populating sidebar, maybe more. //[id,{'title':title,'instructions':instructions, 'price':price etc}]
 	var searchResults=[]; //For dishSelectView
 	var currentDishLocal; //For dishDetailsView
 	var observers =[]; //An array of update functions. The observers come from the views.
-    var currentDishApi={
+    var currentDish={
         'id':"",
         'title':"",
         'type':"",
@@ -16,6 +17,9 @@ var DinnerModel = function() {
         'price':"",
         'ingredients':[{}]
     }
+
+
+
 
 
     /*
@@ -38,6 +42,9 @@ var DinnerModel = function() {
 	}
     
 
+
+
+
     /*
     NUMBER OF GUESTS
     */
@@ -55,6 +62,9 @@ var DinnerModel = function() {
     }
 
 
+
+
+
     /*
     CURRENT DISH
     */
@@ -64,19 +74,19 @@ var DinnerModel = function() {
 	}
 
     this.getCurrentDish = function(){
-        return currentDishApi;
+        return currentDish;
     }
 
 	this.getCurrentDishId = function(){
-		return currentDishApi.id;
+		return currentDish.id;
 	}
 
     this.getCurrentDishPrice = function(){
-        return currentDishApi.price*numberOfGuests;
+        return currentDish.price*numberOfGuests;
     }
 
     this.setCurrentDish = function(id){
-        if (id != currentDishApi.id){
+        if (id != currentDish.id){
             var summary_url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/".concat(id).concat("/summary");
             var information_url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/".concat(id).concat("/information");
             $.ajax({
@@ -85,9 +95,9 @@ var DinnerModel = function() {
                     'X-Mashape-Key':api_key
                 },
                 success: function(data){
-                    currentDishApi.id = data.id;
-                    currentDishApi.summary = data.summary;
-                    currentDishApi.title = data.title;
+                    currentDish.id = data.id;
+                    currentDish.summary = data.summary;
+                    currentDish.title = data.title;
                     notifyObservers("currentDish")
                 },
                 error: function(error){
@@ -100,10 +110,10 @@ var DinnerModel = function() {
                     'X-Mashape-Key':api_key
                 },
                 success: function(data){
-                    currentDishApi.instructions = data.instructions;
-                    currentDishApi.ingredients = data.extendedIngredients;
-                    currentDishApi.price = data.pricePerServing;
-                    currentDishApi.image = data.image;
+                    currentDish.instructions = data.instructions;
+                    currentDish.ingredients = data.extendedIngredients;
+                    currentDish.price = data.pricePerServing;
+                    currentDish.image = data.image;
                 },
                 error: function(error){
                     console.log(error);
@@ -111,116 +121,93 @@ var DinnerModel = function() {
             })
         }
     }
+
+
+
 
 
     /*
     PRICE
     */
-	this.getAllIngredients = function() {
-        //Returns all ingredients for all the dishes on the menu. //Likely soon obsolete!!
-		var ingredientsArray = [];
-		for (var key in menuArray){
-			var dishIngredients = this.getDish(menuArray[key]).ingredients;
-			for (ingredient in dishIngredients){
-				ingredientsArray.push(dishIngredients[ingredient]);
-			}
-		}
-		return ingredientsArray;
-	}
-
-	this.getDishPrice = function(id){
-		var dishPrice = 0;
-		var ingredients = this.getDish(id).ingredients;
-		for (var key in ingredients){
-			var quantity = ingredients[key].quantity;
-			var price = ingredients[key].price;
-			dishPrice += quantity*price;
-		}
-		dishPrice *= this.getNumberOfGuests();
-		return dishPrice
-	}
-
-    //function that returns a dish of specific ID 
-    this.getDish = function (id){
-        var dish= {
-            'id':id,
-            'name':"Name, TODO, get from API",
-            'type':"Type, TODO, get from API",
-            'image':"toast.jpg",
-            'description':"Get description from API",
-            'ingredients':[{
-                'name':'eggs',
-                'quantity':0.5,
-                'unit':'',
-                'price':10
-            },{
-                'name':'milk',
-                'quantity':30,
-                'unit':'ml',
-                'price':6
-            }]
+    this.getDishPrice = function (id){
+        if(menuArray.includes(id)){
+            for (var key in menuItems){
+                if(menuItems[key][0]==id){
+                    return menuItems[key][1].price*this.getNumberOfGuests();
+                }
+            }
         }
-        return dish;
+        else{
+            console.log("Dish not on menu. ");
+        }
+    }
+
+    this.getMenuPrice = function(){
+        var menuPrice=0;
+        for (var key in menuItems){
+            menuPrice += menuItems[key][1].price;
+        }
+        return menuPrice*this.getNumberOfGuests();
     }
 
 
-	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
-	this.getTotalMenuPrice = function() {
-		var totalSum = 0;
-		var ingredientsArray = this.getAllIngredients();
-		for (var key in ingredientsArray){
-			var quantity = ingredientsArray[key].quantity;
-			var price = ingredientsArray[key].price;
-			totalSum = totalSum + quantity*price;
-		}
-		totalSum = totalSum*numberOfGuests;
-		return totalSum;
-	}
+
 
 
     /*
     MENU
     */	
-	this.addDishToMenu = function(id) {
-        //Adds the passed dish to the menu. If the dish of that type already exists on the menu
-        //it is removed from the menu and the new one added.
-        //TODO
-		menuArray.push(id);
-		notifyObservers("menuChange");
-	}
-
-	this.removeDishFromMenu = function(id) {
-        //Removes dish from menu
-		menuArray.splice(menuArray.indexOf(id),1);
-		notifyObservers("menuChange");
-	}
-
-    this.getMenuItems = function(){
-        //Return a list of dish items
-        var information_url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/".concat(id).concat("/information");
-        var menuItems = [];
-        for(var key in menuArray){
-            dishId = menuArray[key];
-            var dish;
-             $.ajax({
+    this.addDishToMenu = function(id) {
+        //Adds the passed dish to the menu. 
+        //TODO If the dish of that type already exists on the menu it is removed from the menu and the new one added.
+        if (!(menuArray.includes(id))){
+            var information_url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/".concat(id).concat("/information");
+            $.ajax({
                 url: information_url,
                 headers:{
                     'X-Mashape-Key':api_key
                 },
                 success: function(data){
-                    dish.title = data.title;
-                    dish.instructions = data.instructions;
-                    dish.ingredients = data.extendedIngredients;
-                    dish.price = data.pricePerServing;
-                    dish.image = data.image;
-                    /////////////////////////////dish is not local to this function. Rethink...
+                    var dishInfo={};
+                    dishInfo.title = data.title;
+                    dishInfo.instructions = data.instructions;
+                    dishInfo.ingredients = data.extendedIngredients;
+                    dishInfo.price = data.pricePerServing;
+                    dishInfo.image = data.image;
+
+                    menuItems.push([data.id,dishInfo]);
+                    menuArray.push(data.id);
+                    notifyObservers("menuChange");
                 },
                 error: function(error){
                     console.log(error);
                 }
             })
         }
+        else{
+            console.log("Dish already in menu. ")
+        }
     }
+
+	this.removeDishFromMenu = function(id) {
+        //Removes dish from menu
+        if(menuArray.includes(id)){
+            for (var key in menuItems){
+                if(menuItems[key][0]==id){
+                    menuItems.splice([key],1);
+                }
+            }
+            menuArray.splice(menuArray.indexOf(id),1);
+            notifyObservers("menuChange");
+        }
+		
+	}
+    this.getMenuItems = function(){
+        return menuItems;
+    }
+
+
+
 
 
     /*
@@ -230,7 +217,7 @@ var DinnerModel = function() {
         return searchResults;
     }
 
-    this.searchApi = function (type, filter){ //, callback, errorCallback
+    this.search = function (type, filter){ //, callback, errorCallback
         //Search function. Calls API with optional type (ie main course) and filter (a string with search word)
         $.ajax({
             url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search",
@@ -251,33 +238,16 @@ var DinnerModel = function() {
         })
     }
 
-    this.searchLocal = function (type,filter){
-        //Search function. Makes a local search in the dishes-array.
-        return dishes.filter(function(dish){
-            var found = true;
-            if(filter){
-                found = false;
-                dish.ingredients.forEach(function(ingredient){
-                    if(ingredient.name.indexOf(filter)!=-1){
-                        found = true;
-                    }
-                });
-                if(dish.name.indexOf(filter) != -1){
-                    found = true;
-                }
-            }
-            return dish.type == type && found;
-        });
-    }
 
-    this.search = function(type,filter){
-        //Takes a type, i.e. main course, appetizer etc.
-        //and a filter. Calls api or local search function
-        //This function will become obsolete soon!
-        this.searchApi(type,filter); //Call to API
-        //searchResults = this.searchLocal(type,filter); notifyObservers("searchResults");//Local call
 
-	}
+
+
+
+
+
+
+
+
 
 
 

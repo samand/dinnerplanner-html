@@ -36,7 +36,6 @@ var DishDetailsView =function(container, model){
 	}
 
 	var populateIngredientsDisplay = function(dish){
-		console.log(dish.ingredients);
 		for(var key in dish.ingredients){
 			var ingr = dish.ingredients[key];
 			var ingrQuantity = document.createElement("div");
