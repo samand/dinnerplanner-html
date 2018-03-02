@@ -72,6 +72,9 @@ var SidebarView = function(container, model){
 			populateMenu();
 			priceOfMenu.html(model.getMenuPrice());
 		}
+		if(changeDetails=="menuChangeFailed"){
+			alert("Oops, embarrassing!\nWe failed to add that dish to the menu. Try again, and if it doesn't work check your internet connection. ");
+		}
 	}
 	model.addObserver(this.update);
 }

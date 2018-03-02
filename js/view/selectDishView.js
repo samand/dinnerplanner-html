@@ -55,6 +55,18 @@ var SelectDishView = function(container, model){
 		if(changeDetails=="searchResults"){
 			showSearchResults();
 		}
+		if(changeDetails=="newSearch"){
+			searchResultsRow.empty();
+			var searchStatusMessage = document.createElement("h3");
+			searchStatusMessage.innerHTML = "Loading search results...";
+			searchResultsRow.append(searchStatusMessage);
+		}
+		if(changeDetails=="searchFailed"){
+			searchResultsRow.empty();
+			var searchStatusMessage = document.createElement("h3");
+			searchStatusMessage.innerHTML = "Search failed. Please try again.";
+			searchResultsRow.append(searchStatusMessage);
+		}
 	}
 	
 	model.addObserver(this.update);	

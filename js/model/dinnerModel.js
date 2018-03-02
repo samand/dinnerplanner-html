@@ -89,6 +89,7 @@ var DinnerModel = function() {
 
     this.setCurrentDish = function(id){
         //TODO Update view with loading screen. 
+        notifyObservers("loadNewCurrentDish");
 
         if (id != currentDish.id){
             var summary_url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/".concat(id).concat("/summary");
@@ -102,9 +103,10 @@ var DinnerModel = function() {
                     currentDish.id = data.id;
                     currentDish.summary = data.summary;
                     currentDish.title = data.title;
-                    notifyObservers("currentDish")
+                    notifyObservers("currentDishSummary");
                 },
                 error: function(error){
+                    notifyObservers("currentDishFailed");
                     console.log(error);
                 }
             })
@@ -114,12 +116,15 @@ var DinnerModel = function() {
                     'X-Mashape-Key':api_key
                 },
                 success: function(data){
+                    currentDish.id=data.id;
                     currentDish.instructions = data.instructions;
                     currentDish.ingredients = data.extendedIngredients;
                     currentDish.price = data.pricePerServing;
                     currentDish.image = data.image;
+                    notifyObservers("currentDishDetails");
                 },
                 error: function(error){
+                    notifyObservers("currentDishFailed");
                     console.log(error);
                 }
             })
@@ -137,7 +142,8 @@ var DinnerModel = function() {
         if(menuArray.includes(id)){
             for (var key in menuItems){
                 if(menuItems[key][0]==id){
-                    return menuItems[key][1].price*this.getNumberOfGuests();
+                    var dishPrice = menuItems[key][1].price*this.getNumberOfGuests();
+                    return Math.round(dishPrice);
                 }
             }
         }
@@ -151,7 +157,8 @@ var DinnerModel = function() {
         for (var key in menuItems){
             menuPrice += menuItems[key][1].price;
         }
-        return menuPrice*this.getNumberOfGuests();
+        var menuPrice = menuPrice*this.getNumberOfGuests();
+        return Math.round(menuPrice);
     }
 
 
@@ -165,8 +172,6 @@ var DinnerModel = function() {
         //Adds the passed dish to the menu. 
         //TODO If the dish of that type already exists on the menu it is removed from the menu and the new one added.
         //EDIT Not applicable with API. Each dish from API can have multiple types. 
-
-        //TODO Update view with loading screen. 
 
         if (!(menuArray.includes(id))){
             var information_url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/".concat(id).concat("/information");
@@ -188,6 +193,7 @@ var DinnerModel = function() {
                     notifyObservers("menuChange");
                 },
                 error: function(error){
+                    notifyObservers("menuChangeFailed");
                     console.log(error);
                 }
             })
@@ -209,7 +215,7 @@ var DinnerModel = function() {
             notifyObservers("menuChange");
         }
         else{
-            console.log("Can't remove from menu. Dish not in menu. ")
+            console.log("Can't remove from menu. Dish not in menu. ");
         }
 		
 	}
@@ -233,6 +239,7 @@ var DinnerModel = function() {
         //Search function. Calls API with optional type (ie main course) and filter (a string with search word)
 
         //TODO Update view with loading screen. 
+        notifyObservers("newSearch");
 
         $.ajax({
             url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search",
@@ -248,6 +255,7 @@ var DinnerModel = function() {
                 notifyObservers("searchResults");
             },
             error: function(error){
+                notifyObservers("searchFailed");
                 console.log(error);
             }
         })

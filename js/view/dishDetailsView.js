@@ -6,7 +6,7 @@ var DishDetailsView =function(container, model){
 
 	//Find containers
 	var dishTitle = container.find("#dishTitle");
-	var dishImage = container.find("#dishImage");
+	var dishImage = container.find("#dishImage")[0];
 	var dishSummary = container.find("#dishSummary");
 	var numberOfGuests = container.find("#numberOfGuests");
 	var ingredientsDisplay = container.find("#ingredientsDisplay");
@@ -14,6 +14,14 @@ var DishDetailsView =function(container, model){
 	var addToMenuButton = container.find("#addToMenuButton")[0];
 	var removeFromMenuButton = container.find("#removeFromMenuButton")[0];
 
+
+	var updateDishDescription = function(){
+		dish = model.getCurrentDish();
+		dishTitle.html(dish.title);
+		//dishImage.src = dish.image; //Both options work, choose depending on what scales easiest.
+		dishImage.src = "https://spoonacular.com/recipeImages/".concat(dish.id).concat("-240x150.jpg");
+		dishSummary.html(dish.summary);
+	}
 
 	var emptyIngredientsDisplay = function(){
 		ingredientsDisplay.empty(); //Throw away all old containers
@@ -38,7 +46,8 @@ var DishDetailsView =function(container, model){
 		ingredientsDisplay.append(clear);
 	}
 
-	var populateIngredientsDisplay = function(dish){
+	var populateIngredientsDisplay = function(){
+		dish = model.getCurrentDish();
 		for(var key in dish.ingredients){
 			var ingr = dish.ingredients[key];
 			var ingrQuantity = document.createElement("div");
@@ -65,6 +74,7 @@ var DishDetailsView =function(container, model){
 	}
 
 	var updateButtons = function(){
+		console.log("updateButtons");
 		if(model.isCurrentDishInMenu()){
 			addToMenuButton.style.display = "none";	
 			removeFromMenuButton.style.display = "inline";
@@ -90,22 +100,31 @@ var DishDetailsView =function(container, model){
 	this.update = function(changeDetails){
 		if(changeDetails=="numberOfGuests"){
 			numberOfGuests.html(model.getNumberOfGuests());
-			dishPrice.html(model.getCurrentDishPrice());
+			dishPrice.html(Math.round(model.getCurrentDishPrice()));
 		}
-		if(changeDetails=="currentDish"){
-			dish = model.getCurrentDish();
-			dishTitle.html(dish.title);
-			//dishImage[0].src = dish.image; //Both options work, choose depending on what scales easiest.
-			dishImage[0].src = "https://spoonacular.com/recipeImages/".concat(dish.id).concat("-240x150.jpg");
-			dishSummary.html(dish.summary);
+		if(changeDetails=="currentDishSummary"){
+			updateDishDescription();
+		}
+		if(changeDetails=="currentDishDetails"){
 			emptyIngredientsDisplay();
-			populateIngredientsDisplay(dish);
-			dishPrice.html(model.getCurrentDishPrice());
+			populateIngredientsDisplay();
+			dishPrice.html(Math.round(model.getCurrentDishPrice()));
 			updateButtons();
 		}
 		if(changeDetails=="menuChange"){
 			updateButtons();
 		}
+		if(changeDetails=="loadNewCurrentDish"){
+			dishTitle.html("Loading dish details...")
+			dishImage.src = "";
+			dishSummary.html("");
+			emptyIngredientsDisplay();
+			dishPrice.html("0");
+		}
+		if(changeDetails=="currentDishFailed"){
+			alert("Oh no! Looks like that didn't go as planned.\nTry again, and if it doesn't work check your internet connection.");
+		}
+
 	}
 	model.addObserver(this.update);
 }
