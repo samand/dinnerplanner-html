@@ -16,7 +16,6 @@ var SidebarView = function(container, model){
 	var populateMenu = function(){
 		var menuItems = model.getMenuItems();
 		//[id,{'title':title,'instructions':instructions, 'price':price etc}]
-		console.log(menuItems)
 		for(var key in menuItems){
 			var dishId = menuItems[key][0];
 			var dishInfo = menuItems[key][1];

@@ -22,30 +22,32 @@ var DinnerPrintoutView = function(container, model){
 		}
 		if(changeDetails=="menuChange"){
 			menuPrintout.empty();
-			var menu = model.getMenu();
-			for(var key in menu){
+			var menuItems = model.getMenuItems();
+			for(var key in menuItems){
+				var dishId = menuItems[key][0];
+				var dishInfo = menuItems[key][1];
 				//Create elements and set formatting
 				var row = document.createElement("div");
+				row.id = "dishId_".concat(dishId);
 				row.className = "row border";
-				var img = document.createElement("img");
-				img.className = "col-xs-3 col-sm-2";
-				var name = document.createElement("h4");
-				name.className = "col-xs-3 col-sm-2";
-				var description = document.createElement("div");
-				description.className = "col-xs-6 col-sm-6";
+				var dishImage = document.createElement("img");
+				dishImage.className = "col-xs-3 col-sm-2";
+				var dishTitle = document.createElement("h4");
+				dishTitle.className = "col-xs-3 col-sm-2";
+				var dishInstructions = document.createElement("div");
+				dishInstructions.className = "col-xs-6 col-sm-6";
 				//Set image, name and instructions as inner values
-				var dishItem = model.getDish(menu[key]);
-				img.src = "images/".concat(dishItem.image);
-				name.innerHTML = dishItem.name;
-				description.innerHTML = dishItem.description;
+				dishImage.src = dishInfo.image;
+				dishTitle.innerHTML = dishInfo.title;
+				dishInstructions.innerHTML = dishInfo.instructions;
 
-				row.append(img);
-				row.append(name);
-				row.append(description);
+				row.append(dishImage);
+				row.append(dishTitle);
+				row.append(dishInstructions);
 
 				menuPrintout.append(row);
 			}
 		}
 	}
-	//model.addObserver(this.update);
+	model.addObserver(this.update);
 }
