@@ -2,6 +2,7 @@ var DishDetailsView =function(container, model){
 	//Container - #dishDetails
 	this.toSearchButton = container.find("#toSearchButton")[0];
 	this.addToMenuButton = container.find("#addToMenuButton")[0];
+	this.removeFromMenuButton = container.find("#removeFromMenuButton")[0];
 
 	//Find containers
 	var dishTitle = container.find("#dishTitle");
@@ -10,6 +11,8 @@ var DishDetailsView =function(container, model){
 	var numberOfGuests = container.find("#numberOfGuests");
 	var ingredientsDisplay = container.find("#ingredientsDisplay");
 	var dishPrice = container.find("#dishPrice");
+	var addToMenuButton = container.find("#addToMenuButton")[0];
+	var removeFromMenuButton = container.find("#removeFromMenuButton")[0];
 
 
 	var emptyIngredientsDisplay = function(){
@@ -60,6 +63,18 @@ var DishDetailsView =function(container, model){
 			ingredientsDisplay.append(clear);
 		}
 	}
+
+	var updateButtons = function(){
+		if(model.isCurrentDishInMenu()){
+			addToMenuButton.style.display = "none";	
+			removeFromMenuButton.style.display = "inline";
+		}
+		else{
+			addToMenuButton.style.display = "inline";
+			removeFromMenuButton.style.display = "none"
+		}
+
+	}
 	
 	this.hide = function(){
 		container[0].style.display = "none";
@@ -86,6 +101,10 @@ var DishDetailsView =function(container, model){
 			emptyIngredientsDisplay();
 			populateIngredientsDisplay(dish);
 			dishPrice.html(model.getCurrentDishPrice());
+			updateButtons();
+		}
+		if(changeDetails=="menuChange"){
+			updateButtons();
 		}
 	}
 	model.addObserver(this.update);
