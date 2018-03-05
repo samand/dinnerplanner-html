@@ -3,17 +3,16 @@ var DinnerModel = function() {
     var api_key = "Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB"
 	var numberOfGuests = 4;//Default value
 	var menuArray=[]; //Shall contain only id:s of menu items. [5, 6, 9, 46 etc]
-    var menuItems=[] //Store data for populating sidebar, maybe more. //[id,{'title':title,'instructions':instructions, 'price':price etc}]
-	var searchResults=[]; //For dishSelectView
-	var currentDishLocal; //For dishDetailsView
+    var menuItems=[] //Store data for populating sidebar, maybe more. // [[id,{'title':title,'instructions':instructions, 'price':price etc}],[id,{}]]
+	var searchResults=[]; //For dishSelectView [{id:5,image:, ...}{id:3424,image:, ...}]
+
 	var observers =[]; //An array of update functions. The observers come from the views.
     var currentDish={
         'id':"",
         'title':"",
-        'type':"",
         'image':"",
+        'instructions':"",
         'summary':"",
-        'description':"",
         'price':"",
         'ingredients':[{}]
     }
@@ -89,9 +88,9 @@ var DinnerModel = function() {
 
     this.setCurrentDish = function(id){
         //TODO Update view with loading screen. 
-        notifyObservers("loadNewCurrentDish");
-
+        
         if (id != currentDish.id){
+            notifyObservers("loadNewCurrentDish");
             var summary_url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/".concat(id).concat("/summary");
             var information_url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/".concat(id).concat("/information");
             $.ajax({
@@ -121,6 +120,7 @@ var DinnerModel = function() {
                     currentDish.ingredients = data.extendedIngredients;
                     currentDish.price = data.pricePerServing;
                     currentDish.image = data.image;
+                    currentDish.instructions = data.instructions;
                     notifyObservers("currentDishDetails");
                 },
                 error: function(error){
@@ -130,9 +130,6 @@ var DinnerModel = function() {
             })
         }
     }
-
-
-
 
 
     /*
@@ -173,32 +170,15 @@ var DinnerModel = function() {
         //TODO If the dish of that type already exists on the menu it is removed from the menu and the new one added.
         //EDIT Not applicable with API. Each dish from API can have multiple types. 
 
-        if (!(menuArray.includes(id))){
-            var information_url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/".concat(id).concat("/information");
-            $.ajax({
-                url: information_url,
-                headers:{
-                    'X-Mashape-Key':api_key
-                },
-                success: function(data){
-                    var dishInfo={};
-                    dishInfo.title = data.title;
-                    dishInfo.instructions = data.instructions;
-                    dishInfo.ingredients = data.extendedIngredients;
-                    dishInfo.price = data.pricePerServing;
-                    dishInfo.image = data.image;
 
-                    menuItems.push([data.id,dishInfo]);
-                    menuArray.push(data.id);
-                    notifyObservers("menuChange");
-                },
-                error: function(error){
-                    notifyObservers("menuChangeFailed");
-                    console.log(error);
-                }
-            })
+        if (!(menuArray.includes(id))){
+            //TODO
+            menuItems.push([id,currentDish]);
+            menuArray.push(id);
+            notifyObservers("menuChange");
         }
         else{
+            notifyObservers("menuChangeFailed");
             console.log("Can't add to menu. Dish already in menu. ")
         }
     }

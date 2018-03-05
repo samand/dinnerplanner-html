@@ -16,7 +16,7 @@ var SelectDishView = function(container, model){
 	var searchResultsRow = container.find("#searchResultsRow");
 
 	var showSearchResults = function(){
-		searchResultsRow.empty();
+		
 		var searchResults = model.getSearchResults();
 		for(var key in searchResults){
 			//For each dish among the search results
@@ -53,6 +53,7 @@ var SelectDishView = function(container, model){
 
 	this.update = function(changeDetails){
 		if(changeDetails=="searchResults"){
+			searchResultsRow.empty();
 			showSearchResults();
 		}
 		if(changeDetails=="newSearch"){
